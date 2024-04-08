@@ -8,9 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "test --watch"
+    "test:watch": "test --watch",
+    "server": "json-server server.json -p 5000 --watch"
   },
   "dependencies": {
+    "json-server": "^1.0.0-alpha.23",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18"
@@ -25,6 +27,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "dotenv": "^16.4.5",
     "eslint": "^9.0.0",
     "eslint-config-next": "14.1.4",
     "eslint-config-prettier": "^9.1.0",

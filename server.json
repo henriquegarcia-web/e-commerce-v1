@@ -1,0 +1,1057 @@
+{
+  "products": [
+    {
+      "id": "product-01",
+      "available": true,
+      "name": "Camiseta High Hydra",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 199.0,
+        "sale": {
+          "active": false,
+          "discount": 0,
+          "price": 0,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-01-image-01",
+          "url": "/clothes/product-01-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-01-image-02",
+          "url": "/clothes/product-01-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-01-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-01-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-01-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-01-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-01-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-01-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-01-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-01-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-01-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-01-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-02",
+      "available": true,
+      "name": "Camiseta High Company Flik",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 159.0,
+        "sale": {
+          "active": false,
+          "discount": 0,
+          "price": 0,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-02-image-01",
+          "url": "/clothes/product-02-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-02-image-02",
+          "url": "/clothes/product-02-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-02-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-02-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-02-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-02-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-02-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-02-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-02-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-02-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-02-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-02-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-03",
+      "available": true,
+      "name": "Camiseta High Pinball",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 199.0,
+        "sale": {
+          "active": true,
+          "discount": 20,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-03-image-01",
+          "url": "/clothes/product-03-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-03-image-02",
+          "url": "/clothes/product-03-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-03-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-03-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-03-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-03-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-03-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-03-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-03-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-03-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-03-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-03-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-04",
+      "available": true,
+      "name": "Camiseta High Battery",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 169.0,
+        "sale": {
+          "active": false,
+          "discount": 0,
+          "price": 0,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-04-image-01",
+          "url": "/clothes/product-04-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-04-image-02",
+          "url": "/clothes/product-04-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-04-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-04-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-04-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-04-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-04-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-04-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-04-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-04-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-04-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-04-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-05",
+      "available": false,
+      "name": "Camiseta High Genius",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 199.0,
+        "sale": {
+          "active": false,
+          "discount": 0,
+          "price": 0,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-05-image-01",
+          "url": "/clothes/product-05-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-05-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-05-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-05-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-05-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-05-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-05-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-05-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-05-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-05-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-05-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-06",
+      "available": true,
+      "name": "Camiseta High Banner",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 139.0,
+        "sale": {
+          "active": false,
+          "discount": 0,
+          "price": 0,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-06-image-01",
+          "url": "/clothes/product-06-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-06-image-02",
+          "url": "/clothes/product-06-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-06-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-06-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-06-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-06-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-06-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-06-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-06-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-06-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-06-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-06-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-07",
+      "available": true,
+      "name": "Camiseta High Tee Wildstyle",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 299.0,
+        "sale": {
+          "active": true,
+          "discount": 15,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-07-image-01",
+          "url": "/clothes/product-07-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-07-image-02",
+          "url": "/clothes/product-07-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-07-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-07-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-07-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-07-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-07-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-07-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-07-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-07-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-07-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-07-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-08",
+      "available": true,
+      "name": "Camiseta High Company Razor",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 199.0,
+        "sale": {
+          "active": false,
+          "discount": 0,
+          "price": 0,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-08-image-01",
+          "url": "/clothes/product-08-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-08-image-02",
+          "url": "/clothes/product-08-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-08-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-08-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-08-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-08-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-08-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-08-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-08-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-08-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-08-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-08-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-09",
+      "available": true,
+      "name": "Camiseta High Company Universal",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 179.0,
+        "sale": {
+          "active": false,
+          "discount": 0,
+          "price": 0,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-09-image-01",
+          "url": "/clothes/product-09-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-09-image-02",
+          "url": "/clothes/product-09-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-09-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-09-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-09-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-09-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-09-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-09-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-09-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-09-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-09-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-09-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-10",
+      "available": true,
+      "name": "Camiseta High Company Blender",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 139.0,
+        "sale": {
+          "active": true,
+          "discount": 30,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-10-image-01",
+          "url": "/clothes/product-10-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-10-image-02",
+          "url": "/clothes/product-10-image-02.webp",
+          "alt": "Camiseta Estampada - Frente 2"
+        },
+        {
+          "id": "product-10-image-03",
+          "url": "/clothes/product-10-image-03.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-10-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-10-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-10-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-10-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-10-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-10-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-10-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-10-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-10-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-10-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-11",
+      "available": true,
+      "name": "Camiseta High Company Sardine",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 199.0,
+        "sale": {
+          "active": false,
+          "discount": 0,
+          "price": 0,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-11-image-01",
+          "url": "/clothes/product-11-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-11-image-02",
+          "url": "/clothes/product-11-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-11-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-11-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-11-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-11-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-11-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-11-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-11-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-11-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-11-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-11-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-12",
+      "available": true,
+      "name": "Camiseta High Company Henge",
+      "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
+      "price": {
+        "price": 129.0,
+        "sale": {
+          "active": false,
+          "discount": 0,
+          "price": 0,
+          "description": ""
+        }
+      },
+      "images": [
+        {
+          "id": "product-12-image-01",
+          "url": "/clothes/product-12-image-01.webp",
+          "alt": "Camiseta Estampada - Frente"
+        },
+        {
+          "id": "product-12-image-02",
+          "url": "/clothes/product-12-image-02.webp",
+          "alt": "Camiseta Estampada - Costas"
+        }
+      ],
+      "brand": "HIGH Company",
+      "tags": ["casual", "divertida", "estampada"],
+      "rating": 4.5,
+      "reviews": [
+        {
+          "id": "product-12-review-01",
+          "author": "João Silva",
+          "rating": 5,
+          "review": "Camiseta ótima! Estampa bonita e material de qualidade."
+        },
+        {
+          "id": "product-12-review-02",
+          "author": "Maria Oliveira",
+          "rating": 4,
+          "review": "Camiseta bacana, mas o tamanho ficou um pouco grande."
+        }
+      ],
+      "variations": [
+        {
+          "id": "product-12-variation-01",
+          "color": "Preto",
+          "sizes": [
+            {
+              "id": "product-12-variation-01-sub-01",
+              "size": "P",
+              "stock": 10
+            },
+            {
+              "id": "product-12-variation-01-sub-02",
+              "size": "M",
+              "stock": 5
+            },
+            {
+              "id": "product-12-variation-01-sub-03",
+              "size": "G",
+              "stock": 2
+            }
+          ]
+        },
+        {
+          "id": "product-12-variation-02",
+          "color": "Branco",
+          "sizes": [
+            {
+              "id": "product-12-variation-02-sub-01",
+              "size": "P",
+              "stock": 8
+            },
+            {
+              "id": "product-12-variation-02-sub-02",
+              "size": "M",
+              "stock": 12
+            },
+            {
+              "id": "product-12-variation-02-sub-03",
+              "size": "G",
+              "stock": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
