@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from 'react'
 
 import { api } from '@/api'
 
@@ -41,6 +48,50 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  const findCategoryBySlug = useCallback(
+    (slug: string | null) => {
+      if (!categoriesData || !slug) return null
+
+      const categoryGroup = categoriesData.find((group) =>
+        group.categories.find((c) => c.slug === slug)
+      )
+
+      if (categoryGroup) {
+        const foundCategory = categoryGroup.categories.find(
+          (c) => c.slug === slug
+        )
+        return foundCategory || null
+      }
+
+      return null
+    },
+    [categoriesData]
+  )
+
+  const findProductsListByCategoryId = useCallback(
+    (categoryId: string | null) => {
+      if (!productsData || !categoryId) return []
+
+      const products = productsData.filter((p) =>
+        p.category.includes(categoryId)
+      )
+
+      return products
+    },
+    [productsData]
+  )
+
+  const findProductBySlug = useCallback(
+    (slug: string | null) => {
+      if (!productsData || !slug) return null
+
+      const foundProduct = productsData.find((p) => p.slug === slug)
+
+      return foundProduct || null
+    },
+    [productsData]
+  )
+
   // ========================================================================
 
   useEffect(() => {
@@ -49,14 +100,26 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 
   // ========================================================================
 
+  const StoreContextData: IStoreContextData = useMemo(() => {
+    return {
+      storeDataIsLoading,
+      categoriesData,
+      productsData,
+      findCategoryBySlug,
+      findProductsListByCategoryId,
+      findProductBySlug
+    }
+  }, [
+    storeDataIsLoading,
+    categoriesData,
+    productsData,
+    findCategoryBySlug,
+    findProductsListByCategoryId,
+    findProductBySlug
+  ])
+
   return (
-    <StoreContext.Provider
-      value={{
-        storeDataIsLoading,
-        categoriesData,
-        productsData
-      }}
-    >
+    <StoreContext.Provider value={StoreContextData}>
       {children}
     </StoreContext.Provider>
   )

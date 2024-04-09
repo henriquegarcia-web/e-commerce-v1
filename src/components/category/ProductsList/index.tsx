@@ -13,22 +13,9 @@ interface IProductsList {
 }
 
 const ProductsList = ({ activeCategory }: IProductsList) => {
-  const { productsData } = useStore()
+  const { productsData, findProductsListByCategoryId } = useStore()
 
   const [productsList, setProductsList] = useState<IProduct[] | null>(null)
-
-  const findProductByCategoryId = useCallback(
-    (categoryId: string | null) => {
-      if (!productsData || !categoryId) return []
-
-      const products = productsData.filter((p) =>
-        p.category.includes(categoryId)
-      )
-
-      return products
-    },
-    [productsData]
-  )
 
   useEffect(() => {
     if (!activeCategory) {
@@ -36,9 +23,9 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
       return
     }
 
-    const products = findProductByCategoryId(activeCategory.id)
+    const products = findProductsListByCategoryId(activeCategory.id)
     setProductsList(products)
-  }, [activeCategory, findProductByCategoryId])
+  }, [activeCategory, findProductsListByCategoryId])
 
   return (
     <div className="bg-white">

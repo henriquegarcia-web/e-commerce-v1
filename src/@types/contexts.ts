@@ -1,4 +1,4 @@
-import { ICategoryGroup, IProduct } from '@/@types/store'
+import { ICategory, ICategoryGroup, IProduct } from '@/@types/store'
 
 // ======================================= STORE CONTEXT
 
@@ -6,4 +6,7 @@ export interface IStoreContextData {
   storeDataIsLoading: boolean
   categoriesData: ICategoryGroup[] | null
   productsData: IProduct[] | null
+  findCategoryBySlug: (slug: string | null) => ICategory | null
+  findProductsListByCategoryId: (categoryId: string | null) => IProduct[] | null
+  findProductBySlug: (slug: string | null) => IProduct | null
 }

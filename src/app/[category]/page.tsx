@@ -17,29 +17,9 @@ interface Props {
 export default function CategoryPage({ params }: Props) {
   const { category } = params
 
-  const { categoriesData } = useStore()
+  const { findCategoryBySlug } = useStore()
 
   const [activeCategory, setActiveCategory] = useState<ICategory | null>(null)
-
-  const findCategoryBySlug = useCallback(
-    (slug: string | null) => {
-      if (!categoriesData || !slug) return null
-
-      const categoryGroup = categoriesData.find((group) =>
-        group.categories.find((c) => c.slug === slug)
-      )
-
-      if (categoryGroup) {
-        const foundCategory = categoryGroup.categories.find(
-          (c) => c.slug === slug
-        )
-        return foundCategory || null
-      }
-
-      return null
-    },
-    [categoriesData]
-  )
 
   useEffect(() => {
     const categoryFound = findCategoryBySlug(category)
