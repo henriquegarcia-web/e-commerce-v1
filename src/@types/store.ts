@@ -16,6 +16,16 @@ export interface ICategoryGroup {
 
 // ======================================= PRODUCT TYPES
 
+export interface IProductMainInfo {
+  sku: string
+  name: string
+  brand: string
+  rating: {
+    rate: number
+    totalReviews: number
+  }
+}
+
 export interface IPrice {
   price: number
   sale: {

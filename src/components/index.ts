@@ -18,9 +18,10 @@ import ProductsList from './category/ProductsList'
 
 // ==> PRODUCT COMPONENTS
 
+import ProductInfos from './product/ProductInfos'
 import Breadcrumb from './product/Breadcrumb'
 import ProductImageSlider from './product/ProductImageSlider'
-import ProductInfos from './product/ProductInfos'
+import ProductMainInfos from './product/ProductMainInfos'
 import ProductPrice from './product/ProductPrice'
 import ProductVariations from './product/ProductVariations'
 import ProductRate from './product/ProductRate'
@@ -43,9 +44,10 @@ export {
   ProductCard,
   ProductCardPrice,
   ProductsList,
+  ProductInfos,
   Breadcrumb,
   ProductImageSlider,
-  ProductInfos,
+  ProductMainInfos,
   ProductPrice,
   ProductVariations,
   ProductRate,

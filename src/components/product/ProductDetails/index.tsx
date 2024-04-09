@@ -1,4 +1,14 @@
-import { ProductImageSlider } from '@/components'
+'use client'
+
+import { useMemo } from 'react'
+
+import {
+  ProductImageSlider,
+  ProductMainInfos,
+  ProductPrice,
+  ProductVariations,
+  BuyButton
+} from '@/components'
 
 import { ICategory, IProduct } from '@/@types/store'
 
@@ -8,6 +18,20 @@ interface IProductDetails {
 }
 
 const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
+  const productMainInfos = useMemo(() => {
+    if (!activeProduct) return null
+
+    return {
+      sku: activeProduct.sku,
+      name: activeProduct.name,
+      brand: activeProduct.brand,
+      rating: {
+        rate: activeProduct.rating,
+        totalReviews: activeProduct.reviews.length
+      }
+    }
+  }, [activeProduct])
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -17,7 +41,12 @@ const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
           <div className="flex flex-1">
             <ProductImageSlider imagesData={activeProduct?.images} />
           </div>
-          <div className="flex flex-1 border-2 border-blue-800"></div>
+          <div className="flex flex-1 border-2 border-blue-800">
+            <ProductMainInfos productMainInfos={productMainInfos} />
+            <ProductPrice />
+            <ProductVariations />
+            <BuyButton />
+          </div>
         </div>
       </div>
     </div>
