@@ -1,5 +1,7 @@
 'use client'
 
+import { Header } from '@/components'
+
 interface Props {
   params: {
     category: string
@@ -10,5 +12,9 @@ interface Props {
 export default function ProductPage({ params }: Props) {
   const { category, product } = params
 
-  return <main className=""></main>
+  return (
+    <main className="page">
+      <Header />
+    </main>
+  )
 }

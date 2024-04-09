@@ -1,15 +1,42 @@
 {
   "categories": [
     {
-      "id": "category-01",
-      "slug": "camisetas",
-      "name": "Camisetas"
+      "id": "category-group-01",
+      "name": "Roupas",
+      "categories": [
+        {
+          "id": "category-group-01-category-01",
+          "slug": "camisetas",
+          "name": "Camisetas",
+          "active": true
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "category-group-02",
+      "name": "Calçados",
+      "categories": [
+        {
+          "id": "category-group-02-category-01",
+          "slug": "esporte",
+          "name": "Esporte",
+          "active": false
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "category-group-03",
+      "name": "Acessórios",
+      "categories": [],
+      "active": false
     }
   ],
   "products": [
     {
       "id": "product-01",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Hydra",
@@ -100,7 +127,7 @@
     },
     {
       "id": "product-02",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Flik",
@@ -191,7 +218,7 @@
     },
     {
       "id": "product-03",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Pinball",
@@ -281,7 +308,7 @@
     },
     {
       "id": "product-04",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Battery",
@@ -372,7 +399,7 @@
     },
     {
       "id": "product-05",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": false,
       "name": "Camiseta High Genius",
@@ -458,7 +485,7 @@
     },
     {
       "id": "product-06",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Banner",
@@ -549,7 +576,7 @@
     },
     {
       "id": "product-07",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Tee Wildstyle",
@@ -639,7 +666,7 @@
     },
     {
       "id": "product-08",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Razor",
@@ -730,7 +757,7 @@
     },
     {
       "id": "product-09",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Universal",
@@ -821,7 +848,7 @@
     },
     {
       "id": "product-10",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Blender",
@@ -916,7 +943,7 @@
     },
     {
       "id": "product-11",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Sardine",
@@ -1007,7 +1034,7 @@
     },
     {
       "id": "product-12",
-      "category": "category-01",
+      "category": "category-group-01-category-01",
       "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Henge",

@@ -1,5 +1,7 @@
 'use client'
 
+import { Header } from '@/components'
+
 interface Props {
   params: {
     category: string
@@ -9,5 +11,9 @@ interface Props {
 export default function CategoryPage({ params }: Props) {
   const { category } = params
 
-  return <main className=""></main>
+  return (
+    <main className="page">
+      <Header />
+    </main>
+  )
 }

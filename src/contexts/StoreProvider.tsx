@@ -1,18 +1,38 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+
+import { api } from '@/api'
 
 import { IStoreContextData } from '@/@types/contexts'
+import { ICategoryGroup } from '@/@types/store'
 
 export const StoreContext = createContext<IStoreContextData>(
   {} as IStoreContextData
 )
 
 const StoreProvider = ({ children }: { children: React.ReactNode }) => {
-  const [storeData, setStoreData] = useState(false)
+  const [categoryGroupData, setCategoryGroupData] = useState<
+    ICategoryGroup[] | null
+  >(null)
+
+  const fetchCategories = async () => {
+    await api
+      .get('/categories')
+      .then((response) => {
+        setCategoryGroupData(response.data)
+      })
+      .catch(() => {
+        setCategoryGroupData(null)
+      })
+  }
+
+  useEffect(() => {
+    fetchCategories()
+  }, [])
 
   return (
     <StoreContext.Provider
       value={{
-        storeData
+        categoryGroupData
       }}
     >
       {children}
