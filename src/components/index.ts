@@ -7,6 +7,7 @@ import SearchBar from './common/SearchBar'
 import MiniCart from './common/MiniCart'
 import Favorites from './common/Favorites'
 import UserSettings from './common/UserSettings'
+import IconButton from './common/IconButton'
 
 // ==> CATEGORY COMPONENTS
 
@@ -37,6 +38,7 @@ export {
   MiniCart,
   Favorites,
   UserSettings,
+  IconButton,
   Filters,
   ProductCard,
   ProductCardPrice,
