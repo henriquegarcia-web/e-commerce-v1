@@ -6,6 +6,8 @@ import { Header, ProductsList } from '@/components'
 
 import { useStore } from '@/contexts/StoreProvider'
 
+import { ICategory } from '@/@types/store'
+
 interface Props {
   params: {
     category: string
@@ -17,30 +19,37 @@ export default function CategoryPage({ params }: Props) {
 
   const { categoriesData } = useStore()
 
-  const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null)
+  const [activeCategory, setActiveCategory] = useState<ICategory | null>(null)
 
-  const findCategoryIdBySlug = useCallback(
-    (slug: string) => {
-      if (!categoriesData) return null
+  const findCategoryBySlug = useCallback(
+    (slug: string | null) => {
+      if (!categoriesData || !slug) return null
 
-      const data = categoriesData.find((g) =>
-        g.categories.find((c) => c.slug === slug)
-      )?.id
+      const categoryGroup = categoriesData.find((group) =>
+        group.categories.find((c) => c.slug === slug)
+      )
 
-      return data || null
+      if (categoryGroup) {
+        const foundCategory = categoryGroup.categories.find(
+          (c) => c.slug === slug
+        )
+        return foundCategory || null
+      }
+
+      return null
     },
     [categoriesData]
   )
 
   useEffect(() => {
-    const activeCategory = findCategoryIdBySlug(category)
-    setActiveCategoryId(activeCategory)
-  }, [category, findCategoryIdBySlug])
+    const categoryFound = findCategoryBySlug(category)
+    setActiveCategory(categoryFound)
+  }, [category, findCategoryBySlug])
 
   return (
     <main className="page">
       <Header />
-      <ProductsList activeCategoryId={activeCategoryId} />
+      <ProductsList activeCategory={activeCategory} />
     </main>
   )
 }

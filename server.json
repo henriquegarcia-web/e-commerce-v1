@@ -47,7 +47,6 @@
         "sale": {
           "active": false,
           "discount": 0,
-          "price": 0,
           "description": ""
         }
       },
@@ -138,7 +137,6 @@
         "sale": {
           "active": false,
           "discount": 0,
-          "price": 0,
           "description": ""
         }
       },
@@ -319,7 +317,6 @@
         "sale": {
           "active": false,
           "discount": 0,
-          "price": 0,
           "description": ""
         }
       },
@@ -410,7 +407,6 @@
         "sale": {
           "active": false,
           "discount": 0,
-          "price": 0,
           "description": ""
         }
       },
@@ -496,7 +492,6 @@
         "sale": {
           "active": false,
           "discount": 0,
-          "price": 0,
           "description": ""
         }
       },
@@ -677,7 +672,6 @@
         "sale": {
           "active": false,
           "discount": 0,
-          "price": 0,
           "description": ""
         }
       },
@@ -768,7 +762,6 @@
         "sale": {
           "active": false,
           "discount": 0,
-          "price": 0,
           "description": ""
         }
       },
@@ -954,7 +947,6 @@
         "sale": {
           "active": false,
           "discount": 0,
-          "price": 0,
           "description": ""
         }
       },
@@ -1045,7 +1037,6 @@
         "sale": {
           "active": false,
           "discount": 0,
-          "price": 0,
           "description": ""
         }
       },

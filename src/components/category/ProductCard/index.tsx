@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { ProductCardPrice } from '@/components'
 
@@ -9,8 +10,10 @@ interface IProductCard {
 }
 
 const ProductCard = ({ productInfos }: IProductCard) => {
+  const pathname = usePathname()
+
   return (
-    <Link href={productInfos.slug} className="group">
+    <Link href={`${pathname}/${productInfos.slug}`} className="group">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
         <img
           src={productInfos.images[0].url}
@@ -18,7 +21,7 @@ const ProductCard = ({ productInfos }: IProductCard) => {
           className="transition duration-200 h-full w-full object-cover object-center group-hover:opacity-75"
         />
       </div>
-      <h3 className="mt-4 text-sm text-gray-700">{productInfos.name}</h3>
+      <h3 className="mt-4 mb-1 text-sm text-gray-700">{productInfos.name}</h3>
       <ProductCardPrice priceInfos={productInfos.price} />
     </Link>
   )

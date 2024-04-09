@@ -6,13 +6,13 @@ import { ProductCard } from '@/components'
 
 import { useStore } from '@/contexts/StoreProvider'
 
-import { IProduct } from '@/@types/store'
+import { ICategory, IProduct } from '@/@types/store'
 
 interface IProductsList {
-  activeCategoryId: string | null
+  activeCategory: ICategory | null
 }
 
-const ProductsList = ({ activeCategoryId }: IProductsList) => {
+const ProductsList = ({ activeCategory }: IProductsList) => {
   const { productsData } = useStore()
 
   const [productsList, setProductsList] = useState<IProduct[] | null>(null)
@@ -21,8 +21,8 @@ const ProductsList = ({ activeCategoryId }: IProductsList) => {
     (categoryId: string | null) => {
       if (!productsData || !categoryId) return []
 
-      const products = productsData.filter((product) =>
-        product.category.includes(categoryId)
+      const products = productsData.filter((p) =>
+        p.category.includes(categoryId)
       )
 
       return products
@@ -31,9 +31,14 @@ const ProductsList = ({ activeCategoryId }: IProductsList) => {
   )
 
   useEffect(() => {
-    const products = findProductByCategoryId(activeCategoryId)
+    if (!activeCategory) {
+      setProductsList([])
+      return
+    }
+
+    const products = findProductByCategoryId(activeCategory.id)
     setProductsList(products)
-  }, [activeCategoryId, findProductByCategoryId])
+  }, [activeCategory, findProductByCategoryId])
 
   return (
     <div className="bg-white">
