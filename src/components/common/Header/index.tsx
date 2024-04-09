@@ -19,13 +19,14 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { ICategory, ICategoryGroup } from '@/@types/store'
 import Link from 'next/link'
+import { StateType } from '@/@types/globals'
 
 const classNames = (...classes: any) => {
   return classes.filter(Boolean).join(' ')
 }
 
 const Header = () => {
-  const { categoryGroupData } = useStore()
+  const { categoriesData } = useStore()
 
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false)
 
@@ -79,7 +80,7 @@ const Header = () => {
         className="hidden lg:flex w-full max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
         aria-label="Navigation Header"
       >
-        <DesktopNavigation />
+        <DesktopNavigation categoriesData={categoriesData} />
       </nav>
 
       {/* ================================================= MOBILE HEADER */}
@@ -87,6 +88,7 @@ const Header = () => {
       <HeaderMobile
         mobileMenuIsOpen={mobileMenuIsOpen}
         setMobileMenuIsOpen={setMobileMenuIsOpen}
+        categoriesData={categoriesData}
       />
     </header>
   )
@@ -96,12 +98,14 @@ export default Header
 
 // ============================================== DESKTOP NAVIGATION
 
-const DesktopNavigation = () => {
-  const { categoryGroupData } = useStore()
+interface IDesktopNavigation {
+  categoriesData: ICategoryGroup[] | null
+}
 
+const DesktopNavigation = ({ categoriesData }: IDesktopNavigation) => {
   return (
     <Popover.Group className="flex lg:gap-x-8">
-      {categoryGroupData?.map((categoryGroup: ICategoryGroup) => {
+      {categoriesData?.map((categoryGroup: ICategoryGroup) => {
         const isDisabledCategoryGroup =
           !categoryGroup.categories.length || !categoryGroup.active
 
@@ -177,15 +181,15 @@ const DesktopNavigation = () => {
 
 interface IHeaderMobile {
   mobileMenuIsOpen: boolean
-  setMobileMenuIsOpen: any
+  setMobileMenuIsOpen: StateType
+  categoriesData: ICategoryGroup[] | null
 }
 
 export const HeaderMobile = ({
   mobileMenuIsOpen,
-  setMobileMenuIsOpen
+  setMobileMenuIsOpen,
+  categoriesData
 }: IHeaderMobile) => {
-  const { categoryGroupData } = useStore()
-
   return (
     <Dialog
       as="div"
@@ -218,7 +222,7 @@ export const HeaderMobile = ({
             <div className="space-y-2 py-6">
               <SearchBar />
 
-              {categoryGroupData?.map((categoryGroup: ICategoryGroup) => {
+              {categoriesData?.map((categoryGroup: ICategoryGroup) => {
                 const isDisabledCategoryGroup =
                   !categoryGroup.categories.length || !categoryGroup.active
 
