@@ -1,9 +1,19 @@
 {
+  "categories": [
+    {
+      "id": "category-01",
+      "slug": "camisetas",
+      "name": "Camisetas"
+    }
+  ],
   "products": [
     {
       "id": "product-01",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Hydra",
+      "slug": "camiseta-high-hydra",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 199.0,
@@ -90,8 +100,11 @@
     },
     {
       "id": "product-02",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Flik",
+      "slug": "camiseta-high-company-flik",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 159.0,
@@ -178,8 +191,11 @@
     },
     {
       "id": "product-03",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Pinball",
+      "slug": "camiseta-high-pinball",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 199.0,
@@ -265,8 +281,11 @@
     },
     {
       "id": "product-04",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Battery",
+      "slug": "camiseta-high-battery",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 169.0,
@@ -353,8 +372,11 @@
     },
     {
       "id": "product-05",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": false,
       "name": "Camiseta High Genius",
+      "slug": "camiseta-high-genius",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 199.0,
@@ -436,8 +458,11 @@
     },
     {
       "id": "product-06",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Banner",
+      "slug": "camiseta-high-banner",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 139.0,
@@ -524,8 +549,11 @@
     },
     {
       "id": "product-07",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Tee Wildstyle",
+      "slug": "camiseta-high-tee-wildstyle",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 299.0,
@@ -611,8 +639,11 @@
     },
     {
       "id": "product-08",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Razor",
+      "slug": "camiseta-high-company-razor",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 199.0,
@@ -699,8 +730,11 @@
     },
     {
       "id": "product-09",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Universal",
+      "slug": "camiseta-high-company-universal",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 179.0,
@@ -787,8 +821,11 @@
     },
     {
       "id": "product-10",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Blender",
+      "slug": "camiseta-high-company-blender",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 139.0,
@@ -879,8 +916,11 @@
     },
     {
       "id": "product-11",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Sardine",
+      "slug": "camiseta-high-company-sardine",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 199.0,
@@ -967,8 +1007,11 @@
     },
     {
       "id": "product-12",
+      "category": "category-01",
+      "sku": "628460316003945",
       "available": true,
       "name": "Camiseta High Company Henge",
+      "slug": "camiseta-high-company-henge",
       "description": "A High Company é uma marca que surgiu no Espírito Santo, em 2012, e que veio para transformar o mercado do streetwear. A marca se encontra completamente enraizada dentro do cultura do skateboard, e suas criações únicas com grande influência dos anos 2000, renderam a High um lugar de prestígio tanto dentro quanto fora do país. Chris Brown e Justin Bieber são apenas algumas das personalidades que já foram vistas usando a marca Brasileira. Hoje a High se encontra também dentro do universo do Rap e Hip-hop, criando uma conexão muito forte da marca com a cultura de rua. O sistema de drops da High faz com que os produtos se tornem ainda mais exclusivos, já que os produtos lançados uma vez não costumam aparecer novamente.",
       "price": {
         "price": 129.0,
