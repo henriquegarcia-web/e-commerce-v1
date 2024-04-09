@@ -31,3 +31,13 @@ body {
     text-wrap: balance;
   }
 }
+
+/* ==== COMMON CLASSES ==== */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  min-height: 100vh;
+}
