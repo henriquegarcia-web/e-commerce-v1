@@ -26,6 +26,13 @@ export interface IProductMainInfo {
   }
 }
 
+export interface IFormattedPrice {
+  isOffer: boolean
+  mainPrice: string
+  installmentsPrice: string
+  cashPrice: string
+}
+
 export interface IPrice {
   price: number
   sale: {
@@ -57,6 +64,7 @@ export interface ISize {
 
 export interface IVariation {
   id: string
+  name: string
   color: string
   sizes: ISize[]
 }

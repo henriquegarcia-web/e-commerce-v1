@@ -1,35 +1,17 @@
-import { useMemo } from 'react'
+'use client'
 
-import { formatCurrency } from '@/utils/functions/formatCurrency'
+import { useStore } from '@/contexts/StoreProvider'
 
 import { IPrice } from '@/@types/store'
-
-const installments = process.env.NEXT_PUBLIC_INSTALLMENTS || '10'
-const cash_discount = process.env.NEXT_PUBLIC_CASH_DISCOUNT || '10'
 
 interface IProductCardPrice {
   priceInfos: IPrice
 }
 
 const ProductCardPrice = ({ priceInfos }: IProductCardPrice) => {
-  const formattedPrice = useMemo(() => {
-    const isOffer = priceInfos.sale.active
+  const { formatPrice } = useStore()
 
-    const discountMultiplier = (100 - priceInfos.sale.discount) / 100
-    const mainPrice = isOffer
-      ? priceInfos.price * discountMultiplier
-      : priceInfos.price
-
-    const installmentsPrice = mainPrice / parseInt(installments)
-    const cashPrice = mainPrice - parseInt(cash_discount)
-
-    return {
-      isOffer,
-      mainPrice: formatCurrency(mainPrice),
-      installmentsPrice: `${installments} x de ${formatCurrency(installmentsPrice)}`,
-      cashPrice: `ou ${formatCurrency(cashPrice)} à vista`
-    }
-  }, [])
+  const formattedPrice = formatPrice(priceInfos)
 
   return (
     <div className="flex flex-col gap-y-[2px]">

@@ -9,8 +9,13 @@ import React, {
 
 import { api } from '@/api'
 
+import { formatCurrency } from '@/utils/functions/formatCurrency'
+
 import { IStoreContextData } from '@/@types/contexts'
-import { ICategoryGroup, IProduct } from '@/@types/store'
+import { ICategoryGroup, IPrice, IProduct } from '@/@types/store'
+
+const installments = process.env.NEXT_PUBLIC_INSTALLMENTS || '10'
+const cash_discount = process.env.NEXT_PUBLIC_CASH_DISCOUNT || '10'
 
 export const StoreContext = createContext<IStoreContextData>(
   {} as IStoreContextData
@@ -92,6 +97,25 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     [productsData]
   )
 
+  const formatPrice = (priceInfos: IPrice) => {
+    const isOffer = priceInfos.sale.active
+
+    const discountMultiplier = (100 - priceInfos.sale.discount) / 100
+    const mainPrice = isOffer
+      ? priceInfos.price * discountMultiplier
+      : priceInfos.price
+
+    const installmentsPrice = mainPrice / parseInt(installments)
+    const cashPrice = mainPrice - parseInt(cash_discount)
+
+    return {
+      isOffer,
+      mainPrice: formatCurrency(mainPrice),
+      installmentsPrice: `${installments} x de ${formatCurrency(installmentsPrice)}`,
+      cashPrice: `ou ${formatCurrency(cashPrice)} à vista`
+    }
+  }
+
   // ========================================================================
 
   useEffect(() => {
@@ -107,7 +131,8 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
       productsData,
       findCategoryBySlug,
       findProductsListByCategoryId,
-      findProductBySlug
+      findProductBySlug,
+      formatPrice
     }
   }, [
     storeDataIsLoading,

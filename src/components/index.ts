@@ -8,6 +8,7 @@ import MiniCart from './common/MiniCart'
 import Favorites from './common/Favorites'
 import UserSettings from './common/UserSettings'
 import IconButton from './common/IconButton'
+import Modal from './common/Modal'
 
 // ==> CATEGORY COMPONENTS
 
@@ -40,6 +41,7 @@ export {
   Favorites,
   UserSettings,
   IconButton,
+  Modal,
   Filters,
   ProductCard,
   ProductCardPrice,

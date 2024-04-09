@@ -41,10 +41,10 @@ const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
           <div className="flex flex-1">
             <ProductImageSlider imagesData={activeProduct?.images} />
           </div>
-          <div className="flex flex-1 border-2 border-blue-800">
+          <div className="flex flex-1 flex-col gap-y-6 border-2 border-blue-800">
             <ProductMainInfos productMainInfos={productMainInfos} />
-            <ProductPrice />
-            <ProductVariations />
+            <ProductPrice priceInfos={activeProduct?.price} />
+            <ProductVariations productVariations={activeProduct?.variations} />
             <BuyButton />
           </div>
         </div>

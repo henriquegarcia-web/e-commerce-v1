@@ -1,4 +1,10 @@
-import { ICategory, ICategoryGroup, IProduct } from '@/@types/store'
+import {
+  ICategory,
+  ICategoryGroup,
+  IFormattedPrice,
+  IPrice,
+  IProduct
+} from '@/@types/store'
 
 // ======================================= STORE CONTEXT
 
@@ -9,4 +15,5 @@ export interface IStoreContextData {
   findCategoryBySlug: (slug: string | null) => ICategory | null
   findProductsListByCategoryId: (categoryId: string | null) => IProduct[] | null
   findProductBySlug: (slug: string | null) => IProduct | null
+  formatPrice: (priceInfos: IPrice) => IFormattedPrice
 }

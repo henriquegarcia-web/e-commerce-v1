@@ -1,29 +1,20 @@
 'use client'
 
 import { Fragment, useState } from 'react'
+import Link from 'next/link'
 
-import { Favorites, IconButton, MiniCart, SearchBar } from '@/components'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+
+import { Favorites, MiniCart, SearchBar } from '@/components'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 
 import { useStore } from '@/contexts/StoreProvider'
 
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon
-} from '@heroicons/react/24/outline'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import { ICategory, ICategoryGroup } from '@/@types/store'
-import Link from 'next/link'
-import { StateType } from '@/@types/globals'
+import { mergeClasses } from '@/utils/functions/mergeClasses'
 
-const classNames = (...classes: any) => {
-  return classes.filter(Boolean).join(' ')
-}
+import { ICategory, ICategoryGroup } from '@/@types/store'
+import { StateType } from '@/@types/globals'
 
 const Header = () => {
   const { categoriesData } = useStore()
@@ -113,7 +104,7 @@ const DesktopNavigation = ({ categoriesData }: IDesktopNavigation) => {
           <Popover key={categoryGroup.id} className="relative">
             <Popover.Button
               disabled={isDisabledCategoryGroup}
-              className={classNames(
+              className={mergeClasses(
                 isDisabledCategoryGroup ? 'text-gray-400' : 'text-gray-900',
                 'flex items-center gap-x-1 text-sm font-semibold leading-6 focus-visible:outline-none'
               )}
@@ -147,7 +138,7 @@ const DesktopNavigation = ({ categoriesData }: IDesktopNavigation) => {
                         <div className="flex-auto">
                           <Link
                             href={category.slug}
-                            className={classNames(
+                            className={mergeClasses(
                               isDisabledCategory
                                 ? 'text-gray-400 pointer-events-none'
                                 : 'text-gray-900',
@@ -236,7 +227,7 @@ export const HeaderMobile = ({
                       <>
                         <Disclosure.Button
                           disabled={isDisabledCategoryGroup}
-                          className={classNames(
+                          className={mergeClasses(
                             isDisabledCategoryGroup
                               ? 'text-gray-400'
                               : 'text-gray-900',
@@ -245,7 +236,7 @@ export const HeaderMobile = ({
                         >
                           {categoryGroup.name}
                           <ChevronDownIcon
-                            className={classNames(
+                            className={mergeClasses(
                               open ? 'rotate-180' : '',
                               'h-5 w-5 flex-none'
                             )}
@@ -263,7 +254,7 @@ export const HeaderMobile = ({
                                   as="a"
                                   href={category.slug}
                                   disabled={isDisabledCategory}
-                                  className={classNames(
+                                  className={mergeClasses(
                                     isDisabledCategory
                                       ? 'text-gray-400 pointer-events-none'
                                       : 'text-gray-900',
