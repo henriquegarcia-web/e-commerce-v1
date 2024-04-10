@@ -54,22 +54,20 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
                   value={variation}
                   className={({ active, checked }) =>
                     mergeClasses(
-                      variation.color,
                       active && checked ? 'ring ring-offset-1' : '',
                       !active && checked ? 'ring-2' : '',
                       'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
                     )
                   }
+                  style={{ backgroundColor: variation.color }}
                 >
                   <RadioGroup.Label as="span" className="sr-only">
                     {variation.name}
                   </RadioGroup.Label>
                   <span
                     aria-hidden="true"
-                    className={mergeClasses(
-                      variation.color,
-                      'h-8 w-8 rounded-full border border-black border-opacity-10'
-                    )}
+                    className="h-8 w-8 rounded-full border border-black border-opacity-10"
+                    style={{ backgroundColor: variation.color }}
                   />
                 </RadioGroup.Option>
               ))}
