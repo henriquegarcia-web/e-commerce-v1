@@ -28,7 +28,7 @@ const Breadcrumb = ({ category }: IBreadcrumb) => {
     <nav aria-label="Breadcrumb">
       <ol className="flex items-center gap-1 text-sm text-gray-600">
         <li>
-          <Link href="/" className="block transition hover:text-gray-700">
+          <Link href="" className="block transition hover:text-gray-700">
             <span className="sr-only"> Home </span>
 
             <GoHome className="text-lg text-gray-500" />
