@@ -3,6 +3,7 @@ import {
   ICartProduct,
   ICategory,
   ICategoryGroup,
+  IFavoriteProduct,
   IFilterSize,
   IFormattedPrice,
   IPrice,
@@ -21,6 +22,10 @@ export interface IStoreContextData {
   findProductBySlug: (slug: string | null) => IProduct | null
   formatPrice: (priceInfos: IPrice) => IFormattedPrice
   getBreadcrumb: (categoryId: string) => IBreadcrumbData | null
+  handleAddProductToFavorites: (activeProduct: IProduct | null) => void
+  handleDeleteFavoriteItem: (productId: string) => void
+  handleGetFavoritesItems: () => void
+  favotitesItemsData: IFavoriteProduct[]
 }
 
 export interface ICartContextData {

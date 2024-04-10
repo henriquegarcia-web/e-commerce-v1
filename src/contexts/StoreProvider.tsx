@@ -14,7 +14,12 @@ import { api } from '@/api'
 import { formatCurrency } from '@/utils/functions/formatCurrency'
 
 import { IStoreContextData } from '@/@types/contexts'
-import { ICategoryGroup, IPrice, IProduct } from '@/@types/store'
+import {
+  ICategoryGroup,
+  IFavoriteProduct,
+  IPrice,
+  IProduct
+} from '@/@types/store'
 
 const installments = process.env.NEXT_PUBLIC_INSTALLMENTS || '10'
 const cash_discount = process.env.NEXT_PUBLIC_CASH_DISCOUNT || '10'
@@ -32,6 +37,10 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     ICategoryGroup[] | null
   >(null)
   const [productsData, setProductsData] = useState<IProduct[] | null>(null)
+
+  const [favotitesItemsData, setFavoritesItemsData] = useState<
+    IFavoriteProduct[]
+  >([])
 
   // ========================================================================
 
@@ -141,10 +150,69 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  // ======================================================================== FAVORITES
+
+  const handleGetFavoritesItems = () => {
+    let favoritesItems = []
+    const storedCart = localStorage.getItem('favoritesItems')
+    if (storedCart) {
+      favoritesItems = JSON.parse(storedCart)
+    }
+    setFavoritesItemsData(favoritesItems)
+  }
+
+  const handleDeleteFavoriteItem = (productId: string) => {
+    const storedCart = JSON.parse(
+      localStorage.getItem('favoritesItems') || '[]'
+    )
+
+    const filteredFavorites = storedCart.filter(
+      (item: IFavoriteProduct) => item.productId !== productId
+    )
+
+    localStorage.setItem('favoritesItems', JSON.stringify(filteredFavorites))
+
+    setFavoritesItemsData(filteredFavorites)
+  }
+
+  const isProductInFavorites = (productId: string) => {
+    const storedCart = JSON.parse(
+      localStorage.getItem('favoritesItems') || '[]'
+    )
+
+    return storedCart.some(
+      (item: IFavoriteProduct) => item.productId === productId
+    )
+  }
+
+  const handleAddProductToFavorites = (activeProduct: IProduct | null) => {
+    if (!activeProduct) {
+      throw new Error('Produto inexistente')
+    }
+
+    const storedCart = JSON.parse(
+      localStorage.getItem('favoritesItems') || '[]'
+    )
+
+    const isExistingFavorite = isProductInFavorites(activeProduct.id)
+
+    if (isExistingFavorite) {
+      handleDeleteFavoriteItem(activeProduct.id)
+    } else {
+      const updatedFavorites: IFavoriteProduct[] = [
+        ...storedCart,
+        { productId: activeProduct.id }
+      ]
+      localStorage.setItem('favoritesItems', JSON.stringify(updatedFavorites))
+      setFavoritesItemsData(updatedFavorites)
+    }
+  }
+
   // ========================================================================
 
   useEffect(() => {
     fetchStoreData()
+    handleGetFavoritesItems()
   }, [])
 
   // ========================================================================
@@ -158,7 +226,11 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
       findProductsListByCategoryId,
       findProductBySlug,
       getBreadcrumb,
-      formatPrice
+      formatPrice,
+      handleDeleteFavoriteItem,
+      handleAddProductToFavorites,
+      handleGetFavoritesItems,
+      favotitesItemsData
     }
   }, [
     storeDataIsLoading,
@@ -167,7 +239,8 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     findCategoryBySlug,
     findProductsListByCategoryId,
     findProductBySlug,
-    getBreadcrumb
+    getBreadcrumb,
+    favotitesItemsData
   ])
 
   return (

@@ -15,21 +15,25 @@ import {
 } from '@/@types/globals'
 
 interface IProductVariations {
+  productId?: string
   productVariations?: IVariation[] | null
   filterSelectedColor: IVariation | null
   setFilterSelectedColor: SetStateFilterColorType
   filterSelectedSize: IFilterSize | null
   setFilterSelectedSize: SetStateFilterSizeType
   handleAddProductToCart: () => void
+  handleAddProductToFavorites: () => void
 }
 
 const ProductVariations = ({
+  productId,
   productVariations,
   filterSelectedColor,
   setFilterSelectedColor,
   filterSelectedSize,
   setFilterSelectedSize,
-  handleAddProductToCart
+  handleAddProductToCart,
+  handleAddProductToFavorites
 }: IProductVariations) => {
   const cancelButtonRef = useRef(null)
 
@@ -163,8 +167,10 @@ const ProductVariations = ({
       </div>
 
       <BuyButton
+        productId={productId}
         disabled={!filterSelectedColor || !filterSelectedSize}
-        onClick={handleAddProductToCart}
+        onClickBuy={handleAddProductToCart}
+        onClickFavorite={handleAddProductToFavorites}
       />
 
       <Modal

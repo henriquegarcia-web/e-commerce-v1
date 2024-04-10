@@ -5,7 +5,6 @@ import Footer from './common/Footer'
 import Logo from './common/Logo'
 import SearchBar from './common/SearchBar'
 import MiniCart from './common/MiniCart'
-import Favorites from './common/Favorites'
 import UserSettings from './common/UserSettings'
 import IconButton from './common/IconButton'
 import Modal from './common/Modal'
@@ -40,7 +39,6 @@ export {
   Logo,
   SearchBar,
   MiniCart,
-  Favorites,
   UserSettings,
   IconButton,
   Modal,

@@ -130,3 +130,7 @@ export interface ICartProduct {
   size: IFilterSize
   quantity: 1
 }
+
+export interface IFavoriteProduct {
+  productId: string
+}

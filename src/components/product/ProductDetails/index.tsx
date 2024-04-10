@@ -11,14 +11,9 @@ import {
 } from '@/components'
 
 import { useCart } from '@/contexts/CartProvider'
+import { useStore } from '@/contexts/StoreProvider'
 
-import {
-  ICategory,
-  IVariation,
-  IFilterSize,
-  IProduct,
-  ICartProduct
-} from '@/@types/store'
+import { ICategory, IVariation, IFilterSize, IProduct } from '@/@types/store'
 
 interface IProductDetails {
   productPageLoading: boolean
@@ -31,6 +26,7 @@ const ProductDetails = ({
   activeCategory,
   activeProduct
 }: IProductDetails) => {
+  const { handleAddProductToFavorites } = useStore()
   const { handleAddProductToCart } = useCart()
 
   const [filterSelectedColor, setFilterSelectedColor] =
@@ -69,6 +65,10 @@ const ProductDetails = ({
     )
   }
 
+  const addToFavorite = () => {
+    handleAddProductToFavorites(activeProduct)
+  }
+
   if (productPageLoading) return <></>
 
   return (
@@ -86,12 +86,14 @@ const ProductDetails = ({
             <ProductMainInfos productMainInfos={productMainInfos} />
             <ProductPrice priceInfos={activeProduct?.price} />
             <ProductVariations
+              productId={activeProduct?.id}
               productVariations={activeProduct?.variations}
               filterSelectedColor={filterSelectedColor}
               setFilterSelectedColor={setFilterSelectedColor}
               filterSelectedSize={filterSelectedSize}
               setFilterSelectedSize={setFilterSelectedSize}
               handleAddProductToCart={addToCart}
+              handleAddProductToFavorites={addToFavorite}
             />
           </div>
         </div>

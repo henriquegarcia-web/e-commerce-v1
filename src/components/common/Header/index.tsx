@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-import { Favorites, MiniCart, SearchBar } from '@/components'
+import { MiniCart, SearchBar } from '@/components'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 
 import { useStore } from '@/contexts/StoreProvider'
@@ -63,7 +63,6 @@ const Header = () => {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-2">
           <MiniCart />
-          <Favorites />
         </div>
       </nav>
 
@@ -281,7 +280,6 @@ export const HeaderMobile = ({
             </div>
             <div className="py-6">
               <MiniCart mobile />
-              <Favorites mobile />
             </div>
           </div>
         </div>

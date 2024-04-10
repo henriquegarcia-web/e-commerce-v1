@@ -2,7 +2,6 @@
 
 import React, {
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -27,6 +26,15 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartItemsData, setCartItemsData] = useState([])
 
   // ========================================================================
+
+  const handleGetCartItems = () => {
+    let cartItems = []
+    const storedCart = localStorage.getItem('cartItems')
+    if (storedCart) {
+      cartItems = JSON.parse(storedCart)
+    }
+    setCartItemsData(cartItems)
+  }
 
   const handleAddProductToCart = (
     activeProduct: IProduct | null,
@@ -68,15 +76,8 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     localStorage.setItem('cartItems', JSON.stringify(storedCart))
-  }
 
-  const handleGetCartItems = () => {
-    let cartItems = []
-    const storedCart = localStorage.getItem('cartItems')
-    if (storedCart) {
-      cartItems = JSON.parse(storedCart)
-    }
-    setCartItemsData(cartItems)
+    handleGetCartItems()
   }
 
   const handleDeleteCartItem = (
