@@ -6,8 +6,7 @@ import {
   ProductImageSlider,
   ProductMainInfos,
   ProductPrice,
-  ProductVariations,
-  BuyButton
+  ProductVariations
 } from '@/components'
 
 import { ICategory, IProduct } from '@/@types/store'
@@ -45,7 +44,6 @@ const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
             <ProductMainInfos productMainInfos={productMainInfos} />
             <ProductPrice priceInfos={activeProduct?.price} />
             <ProductVariations productVariations={activeProduct?.variations} />
-            <BuyButton />
           </div>
         </div>
       </div>

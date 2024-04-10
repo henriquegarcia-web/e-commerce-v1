@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
-import Modal from '@/components/common/Modal'
+import { BuyButton, Modal } from '@/components'
 import { RadioGroup } from '@headlessui/react'
 
 import { mergeClasses } from '@/utils/functions/mergeClasses'
@@ -42,7 +42,10 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
 
         <RadioGroup
           value={selectedColor}
-          onChange={setSelectedColor}
+          onChange={(value) => {
+            setSelectedColor(value)
+            setSelectedSize(null)
+          }}
           className="mt-4"
         >
           <RadioGroup.Label className="sr-only">Escolha a cor</RadioGroup.Label>
@@ -155,6 +158,8 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
           </div>
         </RadioGroup>
       </div>
+
+      <BuyButton disabled={!selectedColor || !selectedSize} />
 
       <Modal
         isOpen={isOpenSizeGuideModal}
