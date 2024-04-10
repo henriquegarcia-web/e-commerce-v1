@@ -9,6 +9,7 @@ import Favorites from './common/Favorites'
 import UserSettings from './common/UserSettings'
 import IconButton from './common/IconButton'
 import Modal from './common/Modal'
+import Button from './common/Button'
 
 // ==> CATEGORY COMPONENTS
 
@@ -42,6 +43,7 @@ export {
   UserSettings,
   IconButton,
   Modal,
+  Button,
   Filters,
   ProductCard,
   ProductCardPrice,

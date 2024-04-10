@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useMemo, useState } from 'react'
 
-import { Filters, ProductCard } from '@/components'
+import { Button, Filters, ProductCard } from '@/components'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 
 import {
@@ -43,6 +43,7 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [productsList, setProductsList] = useState<IProduct[] | null>(null)
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([])
 
   useEffect(() => {
     if (!activeCategory) {
@@ -56,48 +57,27 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
 
   // ============================================================ FILTROS
 
-  const allColors = useMemo(() => {
-    if (!productsList) return []
+  const applyFilters = () => {
+    console.log('Filtros selecionados:', selectedFilters)
+  }
 
-    return productsList.reduce((acc: IFilterColor[], product: IProduct) => {
-      product.variations.forEach((variation) => {
-        if (!acc.some((c) => c.variationId === variation.variationId)) {
-          acc.push({
-            variationId: variation.variationId,
-            name: variation.name,
-            color: variation.color
-          })
-        }
-      })
-      return acc
-    }, [])
-  }, [productsList])
-
-  const allSizes = useMemo(() => {
-    if (!productsList) return []
-
-    return productsList.reduce((acc: IFilterSize[], product: IProduct) => {
-      product.variations.forEach((variation) => {
-        variation.sizes.forEach((size) => {
-          if (!acc.some((s) => s.variationId === size.variationId)) {
-            acc.push({
-              variationId: size.variationId,
-              size: size.size
-            })
-          }
-        })
-      })
-      return acc
-    }, [])
-  }, [productsList])
+  const handleFilterSelection = (filterValue: string) => {
+    setSelectedFilters((prevFilters) => {
+      if (prevFilters.includes(filterValue)) {
+        return prevFilters.filter((filter) => filter !== filterValue)
+      } else {
+        return [...prevFilters, filterValue]
+      }
+    })
+  }
 
   const convertToFilters = (colors: IFilterColor[], sizes: IFilterSize[]) => {
     const colorOptions = colors.map((color) => ({
-      value: color.color,
+      value: color.variationId,
       label: color.name
     }))
     const sizeOptions = sizes.map((size) => ({
-      value: size.size.toLowerCase(),
+      value: size.variationId,
       label: size.size
     }))
     return [
@@ -107,36 +87,49 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
   }
 
   const filters = useMemo(() => {
-    return convertToFilters(allColors, allSizes)
-  }, [allColors, allSizes])
-
-  const [selectedColors, setSelectedColors] = useState<string[]>([])
-  const [selectedSizes, setSelectedSizes] = useState<string[]>([])
-
-  const filteredProducts = productsList?.filter((product: IProduct) => {
-    if (selectedColors.length === 0 && selectedSizes.length === 0) return true
-
-    const hasSelectedColor = selectedColors.some((variationId) =>
-      product.variations.some(
-        (variation) => variation.variationId === variationId
-      )
-    )
-    const hasSelectedSize = selectedSizes.some((variationId) =>
-      product.variations.some((variation) =>
-        variation.sizes.some((s) => s.variationId === variationId)
-      )
+    const allColors = productsList?.reduce(
+      (acc: IFilterColor[], product: IProduct) => {
+        product.variations.forEach((variation) => {
+          if (!acc.some((c) => c.variationId === variation.variationId)) {
+            acc.push({
+              variationId: variation.variationId,
+              name: variation.name,
+              color: variation.color
+            })
+          }
+        })
+        return acc
+      },
+      []
     )
 
-    return hasSelectedColor || hasSelectedSize
-  })
+    const allSizes = productsList?.reduce(
+      (acc: IFilterSize[], product: IProduct) => {
+        product.variations.forEach((variation) => {
+          variation.sizes.forEach((size) => {
+            if (!acc.some((s) => s.variationId === size.variationId)) {
+              acc.push({
+                variationId: size.variationId,
+                size: size.size
+              })
+            }
+          })
+        })
+        return acc
+      },
+      []
+    )
+
+    return convertToFilters(allColors || [], allSizes || [])
+  }, [productsList])
 
   // ============================================================
 
   useEffect(() => {
-    console.log(filters)
+    console.log(selectedFilters)
     // console.log(allColors)
     // console.log(allSizes)
-  }, [productsList])
+  }, [selectedFilters])
 
   return (
     <div className="bg-white">
@@ -228,6 +221,12 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
                                       defaultValue={option.value}
                                       type="checkbox"
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                      onChange={() =>
+                                        handleFilterSelection(option.value)
+                                      }
+                                      checked={selectedFilters.includes(
+                                        option.value
+                                      )}
                                     />
                                     <label
                                       htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
@@ -243,6 +242,10 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
                         )}
                       </Disclosure>
                     ))}
+
+                    <div className="w-full p-4">
+                      <Button label="Aplicar" />
+                    </div>
                   </form>
                 </Dialog.Panel>
               </Transition.Child>
@@ -369,6 +372,12 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
                                   defaultValue={option.value}
                                   type="checkbox"
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  onChange={() =>
+                                    handleFilterSelection(option.value)
+                                  }
+                                  checked={selectedFilters.includes(
+                                    option.value
+                                  )}
                                 />
                                 <label
                                   htmlFor={`filter-${section.id}-${optionIdx}`}
@@ -384,6 +393,11 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
                     )}
                   </Disclosure>
                 ))}
+
+                <div className="flex flex-col w-full gap-y-2 mt-6">
+                  <Button label="Remover filtros" inverted />
+                  <Button label="Aplicar" />
+                </div>
               </form>
 
               <div className="lg:col-span-3">
