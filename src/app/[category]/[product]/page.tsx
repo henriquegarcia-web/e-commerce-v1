@@ -23,17 +23,25 @@ export default function ProductPage({ params }: Props) {
   const [activeCategory, setActiveCategory] = useState<ICategory | null>(null)
   const [activeProduct, setActiveProduct] = useState<IProduct | null>(null)
 
+  const [productPageLoading, setProductPageLoading] = useState(true)
+
   useEffect(() => {
     const categoryFound = findCategoryBySlug(category)
     const productFound = findProductBySlug(product)
+
+    if (!categoryFound || !productFound) return
+
     setActiveCategory(categoryFound)
     setActiveProduct(productFound)
-  }, [category, findCategoryBySlug])
+
+    setProductPageLoading(false)
+  }, [category, product, findCategoryBySlug, findProductBySlug])
 
   return (
     <main className="page">
       <Header />
       <ProductDetails
+        productPageLoading={productPageLoading}
         activeCategory={activeCategory}
         activeProduct={activeProduct}
       />

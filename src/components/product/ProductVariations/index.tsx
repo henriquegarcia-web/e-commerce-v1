@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image'
 
 import { BuyButton, Modal } from '@/components'
@@ -8,23 +8,26 @@ import { RadioGroup } from '@headlessui/react'
 
 import { mergeClasses } from '@/utils/functions/mergeClasses'
 
-import { IVariation } from '@/@types/store'
-import { SetStateStringType } from '@/@types/globals'
+import { IFilterColor, IFilterSize, IVariation } from '@/@types/store'
+import {
+  SetStateFilterSizeType,
+  SetStateFilterColorType
+} from '@/@types/globals'
 
 interface IProductVariations {
   productVariations?: IVariation[] | null
-  selectedColor: string
-  setSelectedColor: SetStateStringType
-  selectedSize: string
-  setSelectedSize: SetStateStringType
+  filterSelectedColor: IVariation | null
+  setFilterSelectedColor: SetStateFilterColorType
+  filterSelectedSize: IFilterSize | null
+  setFilterSelectedSize: SetStateFilterSizeType
 }
 
 const ProductVariations = ({
   productVariations,
-  selectedColor,
-  setSelectedColor,
-  selectedSize,
-  setSelectedSize
+  filterSelectedColor,
+  setFilterSelectedColor,
+  filterSelectedSize,
+  setFilterSelectedSize
 }: IProductVariations) => {
   const cancelButtonRef = useRef(null)
 
@@ -33,16 +36,18 @@ const ProductVariations = ({
   const handleOpenSizeGuideModal = () =>
     setIsOpenSizeGuideModal(!isOpenSizeGuideModal)
 
+  console.log(filterSelectedColor)
+
   return (
     <div className="mt-2">
       <div>
         <h3 className="text-sm font-medium text-gray-900">Cor</h3>
 
         <RadioGroup
-          value={selectedColor}
+          value={filterSelectedColor}
           onChange={(value) => {
-            setSelectedColor(value)
-            setSelectedSize(null)
+            setFilterSelectedColor(value)
+            setFilterSelectedSize(null)
           }}
           className="mt-4"
         >
@@ -89,17 +94,17 @@ const ProductVariations = ({
         </div>
 
         <RadioGroup
-          value={selectedSize}
-          onChange={setSelectedSize}
+          value={filterSelectedSize}
+          onChange={setFilterSelectedSize}
           className="mt-4"
         >
           <RadioGroup.Label className="sr-only">
             Escolha o tamanho
           </RadioGroup.Label>
           <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-            {selectedColor &&
-              selectedColor.sizes &&
-              selectedColor.sizes.map((size) => (
+            {filterSelectedColor &&
+              filterSelectedColor.sizes &&
+              filterSelectedColor.sizes.map((size) => (
                 <RadioGroup.Option
                   key={size.id}
                   value={size}
@@ -157,7 +162,10 @@ const ProductVariations = ({
         </RadioGroup>
       </div>
 
-      <BuyButton disabled={!selectedColor || !selectedSize} onClick={} />
+      <BuyButton
+        disabled={!filterSelectedColor || !filterSelectedSize}
+        // onClick={}
+      />
 
       <Modal
         isOpen={isOpenSizeGuideModal}

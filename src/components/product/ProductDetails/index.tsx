@@ -10,26 +10,30 @@ import {
   ProductVariations
 } from '@/components'
 
-import { ICategory, IProduct } from '@/@types/store'
+import { ICategory, IVariation, IFilterSize, IProduct } from '@/@types/store'
 
 interface IProductDetails {
+  productPageLoading: boolean
   activeCategory: ICategory | null
   activeProduct: IProduct | null
 }
 
-const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
-  const [selectedColor, setSelectedColor] = useState(
-    activeProduct?.variations ? activeProduct?.variations[0] : null
-  )
-  const [selectedSize, setSelectedSize] = useState(
-    selectedColor && selectedColor.sizes ? selectedColor.sizes[0] : null
-  )
+const ProductDetails = ({
+  productPageLoading,
+  activeCategory,
+  activeProduct
+}: IProductDetails) => {
+  const [filterSelectedColor, setFilterSelectedColor] =
+    useState<IVariation | null>(null)
+  const [filterSelectedSize, setFilterSelectedSize] =
+    useState<IFilterSize | null>(null)
 
   useEffect(() => {
     const productVariations = activeProduct?.variations
 
     if (productVariations && productVariations?.length > 0) {
-      setSelectedColor(productVariations[0])
+      setFilterSelectedColor(productVariations[0])
+      setFilterSelectedSize(productVariations[0].sizes[0])
     }
   }, [activeProduct])
 
@@ -47,6 +51,8 @@ const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
     }
   }, [activeProduct])
 
+  if (productPageLoading) return <></>
+
   return (
     <div className="bg-white">
       <div className="flex flex-col gap-y-8 mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8">
@@ -63,10 +69,10 @@ const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
             <ProductPrice priceInfos={activeProduct?.price} />
             <ProductVariations
               productVariations={activeProduct?.variations}
-              selectedColor={selectedColor}
-              setSelectedColor={setSelectedColor}
-              selectedSize={selectedSize}
-              setSelectedSize={setSelectedSize}
+              filterSelectedColor={filterSelectedColor}
+              setFilterSelectedColor={setFilterSelectedColor}
+              filterSelectedSize={filterSelectedSize}
+              setFilterSelectedSize={setFilterSelectedSize}
             />
           </div>
         </div>
