@@ -1,3 +1,5 @@
-export default function Filters() {
+const Filters = () => {
   return <div className=""></div>
 }
+
+export default Filters
