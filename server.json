@@ -82,21 +82,25 @@
       "variations": [
         {
           "id": "product-01-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-01-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-01-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-01-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -104,21 +108,25 @@
         },
         {
           "id": "product-01-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-01-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-01-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-01-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -174,21 +182,25 @@
       "variations": [
         {
           "id": "product-02-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-02-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-02-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-02-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -196,21 +208,25 @@
         },
         {
           "id": "product-02-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-02-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-02-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-02-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -266,21 +282,25 @@
       "variations": [
         {
           "id": "product-03-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-03-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-03-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-03-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -288,21 +308,25 @@
         },
         {
           "id": "product-03-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-03-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-03-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-03-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -358,21 +382,25 @@
       "variations": [
         {
           "id": "product-04-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-04-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-04-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-04-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -380,21 +408,25 @@
         },
         {
           "id": "product-04-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-04-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-04-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-04-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -445,21 +477,25 @@
       "variations": [
         {
           "id": "product-05-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-05-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-05-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-05-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -467,21 +503,25 @@
         },
         {
           "id": "product-05-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-05-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-05-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-05-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -537,21 +577,25 @@
       "variations": [
         {
           "id": "product-06-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-06-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-06-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-06-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -559,21 +603,25 @@
         },
         {
           "id": "product-06-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-06-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-06-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-06-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -629,21 +677,25 @@
       "variations": [
         {
           "id": "product-07-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-07-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-07-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-07-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -651,21 +703,25 @@
         },
         {
           "id": "product-07-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-07-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-07-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-07-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -721,21 +777,25 @@
       "variations": [
         {
           "id": "product-08-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-08-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-08-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-08-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -743,21 +803,25 @@
         },
         {
           "id": "product-08-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-08-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-08-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-08-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -813,21 +877,25 @@
       "variations": [
         {
           "id": "product-09-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-09-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-09-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-09-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -835,21 +903,25 @@
         },
         {
           "id": "product-09-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-09-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-09-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-09-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -910,21 +982,25 @@
       "variations": [
         {
           "id": "product-10-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-10-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-10-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-10-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -932,21 +1008,25 @@
         },
         {
           "id": "product-10-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-10-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-10-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-10-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -1002,21 +1082,25 @@
       "variations": [
         {
           "id": "product-11-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-11-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-11-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-11-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -1024,21 +1108,25 @@
         },
         {
           "id": "product-11-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-11-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-11-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-11-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }
@@ -1094,21 +1182,25 @@
       "variations": [
         {
           "id": "product-12-variation-01",
+          "variationId": "color-black",
           "name": "Preto",
           "color": "black",
           "sizes": [
             {
               "id": "product-12-variation-01-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 10
             },
             {
               "id": "product-12-variation-01-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 5
             },
             {
               "id": "product-12-variation-01-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 2
             }
@@ -1116,21 +1208,25 @@
         },
         {
           "id": "product-12-variation-02",
+          "variationId": "color-white",
           "name": "Branco",
           "color": "white",
           "sizes": [
             {
               "id": "product-12-variation-02-sub-01",
+              "variationId": "size-p",
               "size": "P",
               "stock": 8
             },
             {
               "id": "product-12-variation-02-sub-02",
+              "variationId": "size-m",
               "size": "M",
               "stock": 12
             },
             {
               "id": "product-12-variation-02-sub-03",
+              "variationId": "size-g",
               "size": "G",
               "stock": 7
             }

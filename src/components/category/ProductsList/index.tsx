@@ -21,54 +21,17 @@ const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false },
   { name: 'Price: High to Low', href: '#', current: false }
 ]
-const subCategories = [
-  { name: 'Totes', href: '#' },
-  { name: 'Backpacks', href: '#' },
-  { name: 'Travel Bags', href: '#' },
-  { name: 'Hip Bags', href: '#' },
-  { name: 'Laptop Sleeves', href: '#' }
-]
-const filters = [
-  {
-    id: 'color',
-    name: 'Color',
-    options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: true },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false }
-    ]
-  },
-  {
-    id: 'category',
-    name: 'Category',
-    options: [
-      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-      { value: 'sale', label: 'Sale', checked: false },
-      { value: 'travel', label: 'Travel', checked: true },
-      { value: 'organization', label: 'Organization', checked: false },
-      { value: 'accessories', label: 'Accessories', checked: false }
-    ]
-  },
-  {
-    id: 'size',
-    name: 'Size',
-    options: [
-      { value: '2l', label: '2L', checked: false },
-      { value: '6l', label: '6L', checked: false },
-      { value: '12l', label: '12L', checked: false },
-      { value: '18l', label: '18L', checked: false },
-      { value: '20l', label: '20L', checked: false },
-      { value: '40l', label: '40L', checked: true }
-    ]
-  }
-]
 
 import { useStore } from '@/contexts/StoreProvider'
 
-import { ICategory, IProduct } from '@/@types/store'
+import {
+  ICategory,
+  IFilter,
+  IFilterColor,
+  IFilterOption,
+  IFilterSize,
+  IProduct
+} from '@/@types/store'
 import { mergeClasses } from '@/utils/functions/mergeClasses'
 
 interface IProductsList {
@@ -76,10 +39,9 @@ interface IProductsList {
 }
 
 const ProductsList = ({ activeCategory }: IProductsList) => {
-  const { productsData, findProductsListByCategoryId } = useStore()
+  const { findProductsListByCategoryId } = useStore()
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
-
   const [productsList, setProductsList] = useState<IProduct[] | null>(null)
 
   useEffect(() => {
@@ -91,6 +53,100 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
     const products = findProductsListByCategoryId(activeCategory.id)
     setProductsList(products)
   }, [activeCategory, findProductsListByCategoryId])
+
+  // ============================================================ FILTROS
+
+  const allColors =
+    productsList?.reduce((acc: any[], product: IProduct) => {
+      product.variations.forEach((variation) => {
+        const colorObject = {
+          variationId: variation.variationId,
+          name: variation.name,
+          color: variation.color
+        }
+        if (!acc.some((c) => c.variationId === colorObject.variationId)) {
+          acc.push(colorObject)
+        }
+      })
+      return acc
+    }, []) || []
+
+  const allSizes =
+    productsList?.reduce((acc: any[], product: IProduct) => {
+      product.variations.forEach((variation) => {
+        variation.sizes.forEach((size) => {
+          const sizeObject = {
+            variationId: size.variationId,
+            size: size.size
+          }
+          if (!acc.some((s) => s.variationId === sizeObject.variationId)) {
+            acc.push(sizeObject)
+          }
+        })
+      })
+      return acc
+    }, []) || []
+
+  const convertToFilters = (
+    colors: IFilterColor[],
+    sizes: IFilterSize[]
+  ): IFilter[] => {
+    const colorOptions: IFilterOption[] = colors.map((color) => ({
+      value: color.color,
+      label: color.name
+    }))
+
+    const sizeOptions: IFilterOption[] = sizes.map((size) => ({
+      value: size.size.toLowerCase(),
+      label: size.size
+    }))
+
+    const filters: IFilter[] = [
+      {
+        id: 'color',
+        name: 'Cor',
+        options: colorOptions
+      },
+      {
+        id: 'size',
+        name: 'Tamanho',
+        options: sizeOptions
+      }
+    ]
+
+    return filters
+  }
+
+  const [selectedColors, setSelectedColors] = useState<string[]>([])
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([])
+
+  const filteredProducts = productsList?.filter((product: IProduct) => {
+    if (selectedColors.length === 0 && selectedSizes.length === 0) return true
+
+    const hasSelectedColor = selectedColors.some((variationId) =>
+      product.variations.some(
+        (variation) => variation.variationId === variationId
+      )
+    )
+    const hasSelectedSize = selectedSizes.some((variationId) =>
+      product.variations.some((variation) =>
+        variation.sizes.some((s) => s.variationId === variationId)
+      )
+    )
+
+    return hasSelectedColor || hasSelectedSize
+  })
+
+  // ============================================================
+
+  // useEffect(() => {
+
+  //   console.log(filters)
+  //   // console.log(allColors)
+  //   // console.log(allSizes)
+  // }, [productsList])
+
+  const filters = convertToFilters(allColors, allSizes)
 
   return (
     <div className="bg-white">
@@ -141,21 +197,7 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
 
                   {/* Filters */}
                   <form className="mt-4 border-t border-gray-200">
-                    <h3 className="sr-only">Categories</h3>
-                    <ul
-                      role="list"
-                      className="px-2 py-3 font-medium text-gray-900"
-                    >
-                      {subCategories.map((category) => (
-                        <li key={category.name}>
-                          <a href={category.href} className="block px-2 py-3">
-                            {category.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {filters.map((section) => (
+                    {filters?.map((section) => (
                       <Disclosure
                         as="div"
                         key={section.id}
@@ -195,7 +237,6 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
                                       name={`${section.id}[]`}
                                       defaultValue={option.value}
                                       type="checkbox"
-                                      defaultChecked={option.checked}
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                     />
                                     <label
@@ -289,7 +330,7 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
             </div>
           </div>
 
-          <section aria-labelledby="products-heading" className="pb-24 pt-6">
+          <section aria-labelledby="products-heading" className="pb-24 pt-2">
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
@@ -297,19 +338,7 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
               <form className="hidden lg:block">
-                <h3 className="sr-only">Categories</h3>
-                <ul
-                  role="list"
-                  className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                >
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul>
-
-                {filters.map((section) => (
+                {filters?.map((section) => (
                   <Disclosure
                     as="div"
                     key={section.id}
@@ -349,7 +378,6 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
                                   name={`${section.id}[]`}
                                   defaultValue={option.value}
                                   type="checkbox"
-                                  defaultChecked={option.checked}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label

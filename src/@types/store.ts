@@ -1,5 +1,27 @@
 // ======================================= CATEGORY TYPES
 
+export interface IFilterColor {
+  variationId: string
+  name: string
+  color: string
+}
+
+export interface IFilterSize {
+  variationId: string
+  size: string
+}
+
+export interface IFilterOption {
+  value: string
+  label: string
+}
+
+export interface IFilter {
+  id: string
+  name: string
+  options: IFilterOption[]
+}
+
 export interface ICategory {
   id: string
   slug: string
@@ -63,12 +85,14 @@ export interface IReview {
 
 export interface ISize {
   id: string
+  variationId: string
   size: string
   stock: number
 }
 
 export interface IVariation {
   id: string
+  variationId: string
   name: string
   color: string
   sizes: ISize[]
