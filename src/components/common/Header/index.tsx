@@ -14,7 +14,7 @@ import { useStore } from '@/contexts/StoreProvider'
 import { mergeClasses } from '@/utils/functions/mergeClasses'
 
 import { ICategory, ICategoryGroup } from '@/@types/store'
-import { StateType } from '@/@types/globals'
+import { SetStateBooleanType } from '@/@types/globals'
 
 const Header = () => {
   const { categoriesData } = useStore()
@@ -172,7 +172,7 @@ const DesktopNavigation = ({ categoriesData }: IDesktopNavigation) => {
 
 interface IHeaderMobile {
   mobileMenuIsOpen: boolean
-  setMobileMenuIsOpen: StateType
+  setMobileMenuIsOpen: SetStateBooleanType
   categoriesData: ICategoryGroup[] | null
 }
 

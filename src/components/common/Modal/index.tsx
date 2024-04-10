@@ -4,11 +4,11 @@ import { Fragment } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
 
-import { RefType, StateType } from '@/@types/globals'
+import { RefType, SetStateBooleanType } from '@/@types/globals'
 
 interface IModal {
   isOpen: boolean
-  setIsOpen: StateType
+  setIsOpen: SetStateBooleanType
   children: React.ReactNode
   cancelButtonRef: RefType
 }

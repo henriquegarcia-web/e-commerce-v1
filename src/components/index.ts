@@ -13,7 +13,7 @@ import Button from './common/Button'
 
 // ==> CATEGORY COMPONENTS
 
-import Filters from './category/Filters'
+import { MobileFilters, DesktopFilters } from './category/Filters'
 import ProductCard from './category/ProductCard'
 import ProductCardPrice from './category/ProductCardPrice'
 import ProductsList from './category/ProductsList'
@@ -44,7 +44,8 @@ export {
   IconButton,
   Modal,
   Button,
-  Filters,
+  MobileFilters,
+  DesktopFilters,
   ProductCard,
   ProductCardPrice,
   ProductsList,
