@@ -81,32 +81,6 @@
       ],
       "variations": [
         {
-          "id": "product-01-variation-01",
-          "variationId": "color-black",
-          "name": "Preto",
-          "color": "black",
-          "sizes": [
-            {
-              "id": "product-01-variation-01-sub-01",
-              "variationId": "size-p",
-              "size": "P",
-              "stock": 10
-            },
-            {
-              "id": "product-01-variation-01-sub-02",
-              "variationId": "size-m",
-              "size": "M",
-              "stock": 5
-            },
-            {
-              "id": "product-01-variation-01-sub-03",
-              "variationId": "size-g",
-              "size": "G",
-              "stock": 2
-            }
-          ]
-        },
-        {
           "id": "product-01-variation-02",
           "variationId": "color-white",
           "name": "Branco",

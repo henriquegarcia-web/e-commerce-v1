@@ -14,13 +14,8 @@ import {
 } from '@heroicons/react/20/solid'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
-const sortOptions = [
-  { name: 'Most Popular', href: '#', current: true },
-  { name: 'Best Rating', href: '#', current: false },
-  { name: 'Newest', href: '#', current: false },
-  { name: 'Price: Low to High', href: '#', current: false },
-  { name: 'Price: High to Low', href: '#', current: false }
-]
+import { handleGetFilteredProducts } from '@/utils/functions/filters'
+import { mergeClasses } from '@/utils/functions/mergeClasses'
 
 import { useStore } from '@/contexts/StoreProvider'
 
@@ -30,9 +25,17 @@ import {
   IFilterColor,
   IFilterOption,
   IFilterSize,
-  IProduct
+  IProduct,
+  ProductListType
 } from '@/@types/store'
-import { mergeClasses } from '@/utils/functions/mergeClasses'
+
+const sortOptions = [
+  { name: 'Most Popular', href: '#', current: true },
+  { name: 'Best Rating', href: '#', current: false },
+  { name: 'Newest', href: '#', current: false },
+  { name: 'Price: Low to High', href: '#', current: false },
+  { name: 'Price: High to Low', href: '#', current: false }
+]
 
 interface IProductsList {
   activeCategory: ICategory | null
@@ -42,7 +45,9 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
   const { findProductsListByCategoryId } = useStore()
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
-  const [productsList, setProductsList] = useState<IProduct[] | null>(null)
+  const [productsList, setProductsList] = useState<ProductListType>(null)
+  const [currentProductsList, setCurrentProductsList] =
+    useState<ProductListType>(null)
   const [selectedFilters, setSelectedFilters] = useState<string[]>([])
 
   useEffect(() => {
@@ -55,10 +60,24 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
     setProductsList(products)
   }, [activeCategory, findProductsListByCategoryId])
 
+  useEffect(() => {
+    setCurrentProductsList(productsList)
+  }, [productsList])
+
   // ============================================================ FILTROS
 
   const applyFilters = () => {
-    console.log('Filtros selecionados:', selectedFilters)
+    const filteredProducts = handleGetFilteredProducts(
+      productsList,
+      selectedFilters
+    )
+
+    setCurrentProductsList(filteredProducts || productsList)
+  }
+
+  const clearFilters = () => {
+    setSelectedFilters([])
+    setCurrentProductsList(productsList)
   }
 
   const handleFilterSelection = (filterValue: string) => {
@@ -126,10 +145,10 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
   // ============================================================
 
   useEffect(() => {
-    console.log(selectedFilters)
+    console.log(currentProductsList)
     // console.log(allColors)
     // console.log(allSizes)
-  }, [selectedFilters])
+  }, [currentProductsList])
 
   return (
     <div className="bg-white">
@@ -395,14 +414,20 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
                 ))}
 
                 <div className="flex flex-col w-full gap-y-2 mt-6">
-                  <Button label="Remover filtros" inverted />
-                  <Button label="Aplicar" />
+                  {!!selectedFilters.length && (
+                    <Button
+                      label="Remover filtros"
+                      inverted
+                      onClick={clearFilters}
+                    />
+                  )}
+                  <Button label="Aplicar" onClick={applyFilters} />
                 </div>
               </form>
 
               <div className="lg:col-span-3">
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                  {productsList?.map((product: IProduct) => (
+                  {currentProductsList?.map((product: IProduct) => (
                     <ProductCard key={product.id} productInfos={product} />
                   ))}
                 </div>

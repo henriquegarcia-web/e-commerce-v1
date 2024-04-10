@@ -1,5 +1,7 @@
 // ======================================= CATEGORY TYPES
 
+export type ProductListType = IProduct[] | null
+
 export interface IFilterColor {
   variationId: string
   name: string
