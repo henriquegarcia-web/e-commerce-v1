@@ -16,7 +16,8 @@ import {
   handleConvertToFilters,
   handleGetColorFilter,
   handleGetFilteredProducts,
-  handleGetSizeFilter
+  handleGetSizeFilter,
+  handleSortProductsList
 } from '@/utils/functions/filters'
 import { mergeClasses } from '@/utils/functions/mergeClasses'
 
@@ -26,11 +27,11 @@ import { ICategory, IProduct, ProductListType } from '@/@types/store'
 import { SetStateBooleanType } from '@/@types/globals'
 
 const sortOptions = [
-  { name: 'Most Popular', href: '#', current: true },
-  { name: 'Best Rating', href: '#', current: false },
-  { name: 'Newest', href: '#', current: false },
-  { name: 'Price: Low to High', href: '#', current: false },
-  { name: 'Price: High to Low', href: '#', current: false }
+  { name: 'Nome A-Z', sortId: 'name-az' },
+  { name: 'Nome Z-A', sortId: 'name-za' },
+  { name: 'Melhor avaliados', sortId: 'rated-top' },
+  { name: 'Menores preços', sortId: 'price-low' },
+  { name: 'Maiores preços', sortId: 'price-high' }
 ]
 
 interface IProductsList {
@@ -41,10 +42,13 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
   const { findProductsListByCategoryId } = useStore()
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+
   const [productsList, setProductsList] = useState<ProductListType>(null)
   const [currentProductsList, setCurrentProductsList] =
     useState<ProductListType>(null)
+
   const [selectedFilters, setSelectedFilters] = useState<string[]>([])
+  const [selectedSortOption, setSelectedSortOption] = useState('name-az')
 
   useEffect(() => {
     if (!activeCategory) {
@@ -91,6 +95,18 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
 
     return handleConvertToFilters(filterColors || [], filterSizes || [])
   }, [productsList])
+
+  const sortedProductsList = useMemo(() => {
+    if (!currentProductsList) return []
+
+    return currentProductsList
+      .slice()
+      .sort((a, b) => handleSortProductsList(a, b, selectedSortOption))
+  }, [currentProductsList, selectedSortOption])
+
+  const handleSortChange = (sortId: string) => {
+    setSelectedSortOption(sortId)
+  }
 
   // ============================================================
 
@@ -142,18 +158,17 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
                       {sortOptions.map((option) => (
                         <Menu.Item key={option.name}>
                           {({ active }) => (
-                            <a
-                              href={option.href}
+                            <button
                               className={mergeClasses(
-                                option.current
-                                  ? 'font-medium text-gray-900'
+                                active
+                                  ? 'bg-gray-100 font-medium text-gray-900'
                                   : 'text-gray-500',
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm'
+                                'w-full block px-4 py-2 text-sm transition duration-200'
                               )}
+                              onClick={() => handleSortChange(option.sortId)}
                             >
                               {option.name}
-                            </a>
+                            </button>
                           )}
                         </Menu.Item>
                       ))}
@@ -189,7 +204,7 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
 
               <div className="lg:col-span-3">
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                  {currentProductsList?.map((product: IProduct) => (
+                  {sortedProductsList?.map((product: IProduct) => (
                     <ProductCard key={product.id} productInfos={product} />
                   ))}
                 </div>
