@@ -16,6 +16,11 @@ export interface ICategoryGroup {
 
 // ======================================= PRODUCT TYPES
 
+export interface IBreadcrumbData {
+  categoryGroupName: string
+  categoryName: string | null
+}
+
 export interface IProductMainInfo {
   sku: string
   name: string

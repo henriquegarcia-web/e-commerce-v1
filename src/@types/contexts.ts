@@ -1,4 +1,5 @@
 import {
+  IBreadcrumbData,
   ICategory,
   ICategoryGroup,
   IFormattedPrice,
@@ -16,4 +17,5 @@ export interface IStoreContextData {
   findProductsListByCategoryId: (categoryId: string | null) => IProduct[] | null
   findProductBySlug: (slug: string | null) => IProduct | null
   formatPrice: (priceInfos: IPrice) => IFormattedPrice
+  getBreadcrumb: (categoryId: string) => IBreadcrumbData | null
 }

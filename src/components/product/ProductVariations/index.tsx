@@ -15,6 +15,8 @@ interface IProductVariations {
 }
 
 const ProductVariations = ({ productVariations }: IProductVariations) => {
+  const cancelButtonRef = useRef(null)
+
   const [isOpenSizeGuideModal, setIsOpenSizeGuideModal] = useState(false)
 
   const [selectedColor, setSelectedColor] = useState(
@@ -27,8 +29,6 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
   const handleOpenSizeGuideModal = () =>
     setIsOpenSizeGuideModal(!isOpenSizeGuideModal)
 
-  const cancelButtonRef = useRef(null)
-
   useEffect(() => {
     if (productVariations && productVariations.length > 0) {
       setSelectedColor(productVariations[0])
@@ -36,7 +36,7 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
   }, [productVariations])
 
   return (
-    <form className="mt-2">
+    <div className="mt-2">
       <div>
         <h3 className="text-sm font-medium text-gray-900">Cor</h3>
 
@@ -185,7 +185,7 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
           </button>
         </div>
       </Modal>
-    </form>
+    </div>
   )
 }
 

@@ -97,6 +97,29 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     [productsData]
   )
 
+  const getBreadcrumb = useCallback(
+    (categoryId: string | null) => {
+      if (!categoriesData || !categoryId) return null
+
+      const categoryGroup = categoriesData.find((g) =>
+        g.categories.find((c) => c.id === categoryId)
+      )
+
+      if (categoryGroup) {
+        const foundCategory = categoryGroup.categories.find(
+          (c) => c.id === categoryId
+        )
+        return {
+          categoryGroupName: categoryGroup.name,
+          categoryName: foundCategory ? foundCategory.name : null
+        }
+      }
+
+      return null
+    },
+    [categoriesData]
+  )
+
   const formatPrice = (priceInfos: IPrice) => {
     const isOffer = priceInfos.sale.active
 
@@ -132,6 +155,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
       findCategoryBySlug,
       findProductsListByCategoryId,
       findProductBySlug,
+      getBreadcrumb,
       formatPrice
     }
   }, [
@@ -140,7 +164,8 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     productsData,
     findCategoryBySlug,
     findProductsListByCategoryId,
-    findProductBySlug
+    findProductBySlug,
+    getBreadcrumb
   ])
 
   return (

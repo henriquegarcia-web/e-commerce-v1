@@ -13,7 +13,7 @@ const BuyButton = ({ disabled = false, loading = false }: IBuyButton) => {
         disabled={disabled || loading}
         className="flex flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white transition duration-200 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-gray-500 disabled:pointer-events-none"
       >
-        Add to bag
+        Comprar
       </button>
       <button
         type="button"
