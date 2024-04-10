@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useMemo, useState } from 'react'
 
 import { Filters, ProductCard } from '@/components'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
@@ -56,66 +56,59 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
 
   // ============================================================ FILTROS
 
-  const allColors =
-    productsList?.reduce((acc: any[], product: IProduct) => {
+  const allColors = useMemo(() => {
+    if (!productsList) return []
+
+    return productsList.reduce((acc: IFilterColor[], product: IProduct) => {
       product.variations.forEach((variation) => {
-        const colorObject = {
-          variationId: variation.variationId,
-          name: variation.name,
-          color: variation.color
-        }
-        if (!acc.some((c) => c.variationId === colorObject.variationId)) {
-          acc.push(colorObject)
+        if (!acc.some((c) => c.variationId === variation.variationId)) {
+          acc.push({
+            variationId: variation.variationId,
+            name: variation.name,
+            color: variation.color
+          })
         }
       })
       return acc
-    }, []) || []
+    }, [])
+  }, [productsList])
 
-  const allSizes =
-    productsList?.reduce((acc: any[], product: IProduct) => {
+  const allSizes = useMemo(() => {
+    if (!productsList) return []
+
+    return productsList.reduce((acc: IFilterSize[], product: IProduct) => {
       product.variations.forEach((variation) => {
         variation.sizes.forEach((size) => {
-          const sizeObject = {
-            variationId: size.variationId,
-            size: size.size
-          }
-          if (!acc.some((s) => s.variationId === sizeObject.variationId)) {
-            acc.push(sizeObject)
+          if (!acc.some((s) => s.variationId === size.variationId)) {
+            acc.push({
+              variationId: size.variationId,
+              size: size.size
+            })
           }
         })
       })
       return acc
-    }, []) || []
+    }, [])
+  }, [productsList])
 
-  const convertToFilters = (
-    colors: IFilterColor[],
-    sizes: IFilterSize[]
-  ): IFilter[] => {
-    const colorOptions: IFilterOption[] = colors.map((color) => ({
+  const convertToFilters = (colors: IFilterColor[], sizes: IFilterSize[]) => {
+    const colorOptions = colors.map((color) => ({
       value: color.color,
       label: color.name
     }))
-
-    const sizeOptions: IFilterOption[] = sizes.map((size) => ({
+    const sizeOptions = sizes.map((size) => ({
       value: size.size.toLowerCase(),
       label: size.size
     }))
-
-    const filters: IFilter[] = [
-      {
-        id: 'color',
-        name: 'Cor',
-        options: colorOptions
-      },
-      {
-        id: 'size',
-        name: 'Tamanho',
-        options: sizeOptions
-      }
+    return [
+      { id: 'color', name: 'Cor', options: colorOptions },
+      { id: 'size', name: 'Tamanho', options: sizeOptions }
     ]
-
-    return filters
   }
+
+  const filters = useMemo(() => {
+    return convertToFilters(allColors, allSizes)
+  }, [allColors, allSizes])
 
   const [selectedColors, setSelectedColors] = useState<string[]>([])
   const [selectedSizes, setSelectedSizes] = useState<string[]>([])
@@ -139,14 +132,11 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
 
   // ============================================================
 
-  // useEffect(() => {
-
-  //   console.log(filters)
-  //   // console.log(allColors)
-  //   // console.log(allSizes)
-  // }, [productsList])
-
-  const filters = convertToFilters(allColors, allSizes)
+  useEffect(() => {
+    console.log(filters)
+    // console.log(allColors)
+    // console.log(allSizes)
+  }, [productsList])
 
   return (
     <div className="bg-white">
