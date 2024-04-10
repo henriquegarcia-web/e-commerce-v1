@@ -1,12 +1,16 @@
 'use client'
 
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useMemo, useState } from 'react'
+
+import { IoCartOutline } from 'react-icons/io5'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 
 import { IconButton } from '@/components'
 import { Dialog, Transition } from '@headlessui/react'
 
-import { IoCartOutline } from 'react-icons/io5'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { formatByCurrency } from '@/utils/functions/formatCurrency'
+
+import { ICartProduct } from '@/@types/store'
 
 interface IMiniCart {
   mobile?: boolean
@@ -14,6 +18,57 @@ interface IMiniCart {
 
 const MiniCart = ({ mobile = false }: IMiniCart) => {
   const [miniCartIsOpen, setMiniCartIsOpen] = useState(false)
+
+  const [cartItemsData, setCartItemsData] = useState([])
+
+  const getCartItems = () => {
+    let cartItems = []
+    const storedCart = localStorage.getItem('cartItems')
+    if (storedCart) {
+      cartItems = JSON.parse(storedCart)
+    }
+    setCartItemsData(cartItems)
+  }
+
+  const handleDeleteCartItem = (
+    productId: string,
+    color: string,
+    size: string
+  ) => {
+    const itemIndex = cartItemsData.findIndex(
+      (item: ICartProduct) =>
+        item.productId === productId &&
+        item.color === color &&
+        item.size === size
+    )
+
+    if (itemIndex !== -1) {
+      cartItemsData.splice(itemIndex, 1)
+      localStorage.setItem('cartItems', JSON.stringify(cartItemsData))
+
+      getCartItems()
+    } else {
+      console.error(
+        `Item não encontrado no carrinho: ${productId}, ${color}, ${size}`
+      )
+    }
+  }
+
+  useEffect(() => {
+    getCartItems()
+  }, [miniCartIsOpen])
+
+  const cartTotalPrice = useMemo(() => {
+    const total = cartItemsData.reduce((acc, product: any) => {
+      return acc + formatByCurrency(product.price) * product.quantity
+    }, 0)
+
+    return total.toFixed(2)
+  }, [cartItemsData])
+
+  useEffect(() => {
+    console.log(cartTotalPrice)
+  }, [cartTotalPrice])
 
   return (
     <div className="">
@@ -88,47 +143,53 @@ const MiniCart = ({ mobile = false }: IMiniCart) => {
                               role="list"
                               className="-my-6 divide-y divide-gray-200"
                             >
-                              {/* {products.map((product) => (
-                              <li key={product.id} className="flex py-6">
-                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                  <img
-                                    src={product.imageSrc}
-                                    alt={product.imageAlt}
-                                    className="h-full w-full object-cover object-center"
-                                  />
-                                </div>
-
-                                <div className="ml-4 flex flex-1 flex-col">
-                                  <div>
-                                    <div className="flex justify-between text-base font-medium text-gray-900">
-                                      <h3>
-                                        <a href={product.href}>
-                                          {product.name}
-                                        </a>
-                                      </h3>
-                                      <p className="ml-4">{product.price}</p>
-                                    </div>
-                                    <p className="mt-1 text-sm text-gray-500">
-                                      {product.color}
-                                    </p>
+                              {cartItemsData?.map((product: ICartProduct) => (
+                                <li
+                                  key={`${product.productId}-${product.size}-${product.color}`}
+                                  className="flex py-6"
+                                >
+                                  <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                    <img
+                                      src={product.image}
+                                      alt={product.name}
+                                      className="h-full w-full object-cover object-center"
+                                    />
                                   </div>
-                                  <div className="flex flex-1 items-end justify-between text-sm">
-                                    <p className="text-gray-500">
-                                      Qty {product.quantity}
-                                    </p>
 
-                                    <div className="flex">
-                                      <button
-                                        type="button"
-                                        className="font-medium text-indigo-600 hover:text-indigo-500"
-                                      >
-                                        Remove
-                                      </button>
+                                  <div className="ml-4 flex flex-1 flex-col">
+                                    <div>
+                                      <div className="flex justify-between items-center text-base font-medium text-gray-900">
+                                        <h3>{product.name}</h3>
+                                        <p className="ml-4">{product.price}</p>
+                                      </div>
+                                      <p className="mt-1 text-sm text-gray-500">
+                                        {product.color} - {product.size}
+                                      </p>
+                                    </div>
+                                    <div className="flex flex-1 items-end justify-between text-sm">
+                                      <p className="text-gray-500">
+                                        Quantidade: {product.quantity}
+                                      </p>
+
+                                      <div className="flex">
+                                        <button
+                                          type="button"
+                                          className="font-medium text-indigo-600 hover:text-indigo-500"
+                                          onClick={() =>
+                                            handleDeleteCartItem(
+                                              product.productId,
+                                              product.color,
+                                              product.size
+                                            )
+                                          }
+                                        >
+                                          Remove
+                                        </button>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                              </li>
-                            ))} */}
+                                </li>
+                              ))}
                             </ul>
                           </div>
                         </div>
@@ -137,22 +198,11 @@ const MiniCart = ({ mobile = false }: IMiniCart) => {
                       <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <p>Subtotal</p>
-                          <p>$262.00</p>
+                          <p>{cartTotalPrice}</p>
                         </div>
-                        <p className="mt-0.5 text-sm text-gray-500">
-                          Shipping and taxes calculated at checkout.
-                        </p>
-                        <div className="mt-6">
-                          <a
-                            href="#"
-                            className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                          >
-                            Checkout
-                          </a>
-                        </div>
+
                         <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                           <p>
-                            or{' '}
                             <button
                               type="button"
                               className="font-medium text-indigo-600 hover:text-indigo-500"

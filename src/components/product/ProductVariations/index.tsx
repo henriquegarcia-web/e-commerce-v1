@@ -20,6 +20,7 @@ interface IProductVariations {
   setFilterSelectedColor: SetStateFilterColorType
   filterSelectedSize: IFilterSize | null
   setFilterSelectedSize: SetStateFilterSizeType
+  handleAddProductToCart: () => void
 }
 
 const ProductVariations = ({
@@ -27,7 +28,8 @@ const ProductVariations = ({
   filterSelectedColor,
   setFilterSelectedColor,
   filterSelectedSize,
-  setFilterSelectedSize
+  setFilterSelectedSize,
+  handleAddProductToCart
 }: IProductVariations) => {
   const cancelButtonRef = useRef(null)
 
@@ -35,8 +37,6 @@ const ProductVariations = ({
 
   const handleOpenSizeGuideModal = () =>
     setIsOpenSizeGuideModal(!isOpenSizeGuideModal)
-
-  console.log(filterSelectedColor)
 
   return (
     <div className="mt-2">
@@ -164,7 +164,7 @@ const ProductVariations = ({
 
       <BuyButton
         disabled={!filterSelectedColor || !filterSelectedSize}
-        // onClick={}
+        onClick={handleAddProductToCart}
       />
 
       <Modal

@@ -10,7 +10,15 @@ import {
   ProductVariations
 } from '@/components'
 
-import { ICategory, IVariation, IFilterSize, IProduct } from '@/@types/store'
+import { useStore } from '@/contexts/StoreProvider'
+
+import {
+  ICategory,
+  IVariation,
+  IFilterSize,
+  IProduct,
+  ICartProduct
+} from '@/@types/store'
 
 interface IProductDetails {
   productPageLoading: boolean
@@ -23,6 +31,8 @@ const ProductDetails = ({
   activeCategory,
   activeProduct
 }: IProductDetails) => {
+  const { formatPrice } = useStore()
+
   const [filterSelectedColor, setFilterSelectedColor] =
     useState<IVariation | null>(null)
   const [filterSelectedSize, setFilterSelectedSize] =
@@ -51,6 +61,44 @@ const ProductDetails = ({
     }
   }, [activeProduct])
 
+  const handleAddProductToCart = () => {
+    if (!activeProduct || !filterSelectedColor || !filterSelectedSize) {
+      console.error(
+        'Por favor, selecione uma cor e um tamanho antes de adicionar ao carrinho.'
+      )
+      return
+    }
+
+    const storedCart = JSON.parse(localStorage.getItem('cartItems') || '[]')
+
+    const existingIndex = storedCart.findIndex(
+      (item: ICartProduct) =>
+        item.productId === activeProduct.id &&
+        item.color === filterSelectedColor.color &&
+        item.size === filterSelectedSize.size
+    )
+
+    if (existingIndex !== -1) {
+      storedCart[existingIndex].quantity++
+      console.log('Item já existe no carrinho. Quantidade aumentada em 1.')
+    } else {
+      const formattedPrice = formatPrice(activeProduct.price)
+
+      const newItem = {
+        productId: activeProduct.id,
+        name: activeProduct.name,
+        image: activeProduct.images[0].url,
+        price: formattedPrice.mainPrice,
+        color: filterSelectedColor.color,
+        size: filterSelectedSize.size,
+        quantity: 1
+      }
+      storedCart.push(newItem)
+    }
+
+    localStorage.setItem('cartItems', JSON.stringify(storedCart))
+  }
+
   if (productPageLoading) return <></>
 
   return (
@@ -73,6 +121,7 @@ const ProductDetails = ({
               setFilterSelectedColor={setFilterSelectedColor}
               filterSelectedSize={filterSelectedSize}
               setFilterSelectedSize={setFilterSelectedSize}
+              handleAddProductToCart={handleAddProductToCart}
             />
           </div>
         </div>
