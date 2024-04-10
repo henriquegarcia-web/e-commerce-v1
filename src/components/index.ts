@@ -17,6 +17,7 @@ import { MobileFilters, DesktopFilters } from './category/Filters'
 import ProductCard from './category/ProductCard'
 import ProductCardPrice from './category/ProductCardPrice'
 import ProductsList from './category/ProductsList'
+import Sort from './category/Sort'
 
 // ==> PRODUCT COMPONENTS
 
@@ -49,6 +50,7 @@ export {
   ProductCard,
   ProductCardPrice,
   ProductsList,
+  Sort,
   ProductInfos,
   Breadcrumb,
   ProductImageSlider,

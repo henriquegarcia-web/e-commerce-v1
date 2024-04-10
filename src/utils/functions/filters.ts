@@ -96,6 +96,21 @@ const handleSortProductsList = (
   b: IProduct,
   selectedSortOption: string
 ) => {
+  const calculateDiscountedPrice = (price: number, discount: number) => {
+    return price * ((100 - discount) / 100)
+  }
+
+  const getPriceForSorting = (product: IProduct) => {
+    if (product.price.sale.active) {
+      return calculateDiscountedPrice(
+        product.price.price,
+        product.price.sale.discount
+      )
+    } else {
+      return product.price.price
+    }
+  }
+
   switch (selectedSortOption) {
     case 'name-az':
       return a.name.localeCompare(b.name)
@@ -104,9 +119,9 @@ const handleSortProductsList = (
     case 'rated-top':
       return b.rating - a.rating
     case 'price-low':
-      return a.price.price - b.price.price
+      return getPriceForSorting(a) - getPriceForSorting(b)
     case 'price-high':
-      return b.price.price - a.price.price
+      return getPriceForSorting(b) - getPriceForSorting(a)
     default:
       return 0
   }
