@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import {
   Breadcrumb,
@@ -18,6 +18,21 @@ interface IProductDetails {
 }
 
 const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
+  const [selectedColor, setSelectedColor] = useState(
+    activeProduct?.variations ? activeProduct?.variations[0] : null
+  )
+  const [selectedSize, setSelectedSize] = useState(
+    selectedColor && selectedColor.sizes ? selectedColor.sizes[0] : null
+  )
+
+  useEffect(() => {
+    const productVariations = activeProduct?.variations
+
+    if (productVariations && productVariations?.length > 0) {
+      setSelectedColor(productVariations[0])
+    }
+  }, [activeProduct])
+
   const productMainInfos = useMemo(() => {
     if (!activeProduct) return null
 
@@ -46,7 +61,13 @@ const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
           <div className="flex flex-1 flex-col gap-y-6">
             <ProductMainInfos productMainInfos={productMainInfos} />
             <ProductPrice priceInfos={activeProduct?.price} />
-            <ProductVariations productVariations={activeProduct?.variations} />
+            <ProductVariations
+              productVariations={activeProduct?.variations}
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
+              selectedSize={selectedSize}
+              setSelectedSize={setSelectedSize}
+            />
           </div>
         </div>
       </div>

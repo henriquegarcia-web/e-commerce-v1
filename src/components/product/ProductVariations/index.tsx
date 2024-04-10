@@ -9,31 +9,29 @@ import { RadioGroup } from '@headlessui/react'
 import { mergeClasses } from '@/utils/functions/mergeClasses'
 
 import { IVariation } from '@/@types/store'
+import { SetStateStringType } from '@/@types/globals'
 
 interface IProductVariations {
   productVariations?: IVariation[] | null
+  selectedColor: string
+  setSelectedColor: SetStateStringType
+  selectedSize: string
+  setSelectedSize: SetStateStringType
 }
 
-const ProductVariations = ({ productVariations }: IProductVariations) => {
+const ProductVariations = ({
+  productVariations,
+  selectedColor,
+  setSelectedColor,
+  selectedSize,
+  setSelectedSize
+}: IProductVariations) => {
   const cancelButtonRef = useRef(null)
 
   const [isOpenSizeGuideModal, setIsOpenSizeGuideModal] = useState(false)
 
-  const [selectedColor, setSelectedColor] = useState(
-    productVariations ? productVariations[0] : null
-  )
-  const [selectedSize, setSelectedSize] = useState(
-    selectedColor && selectedColor.sizes ? selectedColor.sizes[0] : null
-  )
-
   const handleOpenSizeGuideModal = () =>
     setIsOpenSizeGuideModal(!isOpenSizeGuideModal)
-
-  useEffect(() => {
-    if (productVariations && productVariations.length > 0) {
-      setSelectedColor(productVariations[0])
-    }
-  }, [productVariations])
 
   return (
     <div className="mt-2">
@@ -159,7 +157,7 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
         </RadioGroup>
       </div>
 
-      <BuyButton disabled={!selectedColor || !selectedSize} />
+      <BuyButton disabled={!selectedColor || !selectedSize} onClick={} />
 
       <Modal
         isOpen={isOpenSizeGuideModal}

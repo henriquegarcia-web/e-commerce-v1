@@ -2,6 +2,8 @@
 
 export type ProductListType = IProduct[] | null
 
+export interface ISort {}
+
 export interface IFilterColor {
   variationId: string
   name: string
