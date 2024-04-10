@@ -1,14 +1,14 @@
 'use client'
 
-import { Fragment, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 
+import Modal from '@/components/common/Modal'
 import { RadioGroup } from '@headlessui/react'
 
 import { mergeClasses } from '@/utils/functions/mergeClasses'
 
 import { IVariation } from '@/@types/store'
-import Image from 'next/image'
-import Modal from '@/components/common/Modal'
 
 interface IProductVariations {
   productVariations?: IVariation[] | null
@@ -29,9 +29,14 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
 
   const cancelButtonRef = useRef(null)
 
+  useEffect(() => {
+    if (productVariations && productVariations.length > 0) {
+      setSelectedColor(productVariations[0])
+    }
+  }, [productVariations])
+
   return (
     <form className="mt-2">
-      {/* Colors */}
       <div>
         <h3 className="text-sm font-medium text-gray-900">Cor</h3>
 
@@ -72,7 +77,6 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
         </RadioGroup>
       </div>
 
-      {/* Sizes */}
       <div className="mt-6">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-medium text-gray-900">Tamanho</h3>
@@ -153,13 +157,6 @@ const ProductVariations = ({ productVariations }: IProductVariations) => {
           </div>
         </RadioGroup>
       </div>
-
-      {/* <button
-        type="submit"
-        className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Add to bag
-      </button> */}
 
       <Modal
         isOpen={isOpenSizeGuideModal}

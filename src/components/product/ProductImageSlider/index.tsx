@@ -18,7 +18,7 @@ const ProductImageSlider = ({ imagesData }: IProductImageSlider) => {
   if (!imagesData) return <div></div>
 
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-4 w-full">
       <div className="flex items-center justify-center rounded-lg border border-gray-200">
         <img
           className="h-auto w-full max-w-[90%] rounded-lg object-contain object-center md:h-[480px]"
@@ -31,7 +31,7 @@ const ProductImageSlider = ({ imagesData }: IProductImageSlider) => {
           <div
             key={image.id}
             className={`flex items-center justify-center rounded-lg cursor-pointer border border-gray-200 ${
-              index === activeImageIndex ? 'border-2 border-blue-500' : ''
+              index === activeImageIndex ? 'border-4 border-blue-500' : ''
             }`}
           >
             <img
