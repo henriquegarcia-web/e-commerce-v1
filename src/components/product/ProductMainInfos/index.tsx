@@ -11,7 +11,7 @@ const ProductMainInfos = ({ productMainInfos }: IProductMainInfos) => {
 
   return (
     <div className="flex flex-col w-full gap-y-2">
-      <div className="flex justify-between items-center w-full">
+      <div className="flex justify-between items-center w-full mb-2">
         <span className="text-sm font-semibold text-gray-600">
           {productMainInfos.brand}
         </span>
