@@ -1,15 +1,3 @@
-// ======================================= COMMON TYPES
-
-export interface ICartProduct {
-  productId: string
-  name: string
-  image: string
-  price: string
-  color: string
-  size: string
-  quantity: 1
-}
-
 // ======================================= CATEGORY TYPES
 
 export type ProductListType = IProduct[] | null
@@ -129,4 +117,16 @@ export interface IProduct {
   rating: number
   reviews: IReview[]
   variations: IVariation[]
+}
+
+// ======================================= COMMON TYPES
+
+export interface ICartProduct {
+  productId: string
+  name: string
+  image: string
+  price: string
+  color: IVariation
+  size: IFilterSize
+  quantity: 1
 }

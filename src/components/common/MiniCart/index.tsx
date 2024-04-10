@@ -38,8 +38,8 @@ const MiniCart = ({ mobile = false }: IMiniCart) => {
     const itemIndex = cartItemsData.findIndex(
       (item: ICartProduct) =>
         item.productId === productId &&
-        item.color === color &&
-        item.size === size
+        item.color.variationId === color &&
+        item.size.variationId === size
     )
 
     if (itemIndex !== -1) {
@@ -163,7 +163,8 @@ const MiniCart = ({ mobile = false }: IMiniCart) => {
                                         <p className="ml-4">{product.price}</p>
                                       </div>
                                       <p className="mt-1 text-sm text-gray-500">
-                                        {product.color} - {product.size}
+                                        {product.color.name} -{' '}
+                                        {product.size.size}
                                       </p>
                                     </div>
                                     <div className="flex flex-1 items-end justify-between text-sm">
@@ -178,8 +179,8 @@ const MiniCart = ({ mobile = false }: IMiniCart) => {
                                           onClick={() =>
                                             handleDeleteCartItem(
                                               product.productId,
-                                              product.color,
-                                              product.size
+                                              product.color.variationId,
+                                              product.size.variationId
                                             )
                                           }
                                         >

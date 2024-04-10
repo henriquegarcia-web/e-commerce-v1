@@ -74,8 +74,8 @@ const ProductDetails = ({
     const existingIndex = storedCart.findIndex(
       (item: ICartProduct) =>
         item.productId === activeProduct.id &&
-        item.color === filterSelectedColor.color &&
-        item.size === filterSelectedSize.size
+        item.color.variationId === filterSelectedColor.variationId &&
+        item.size.variationId === filterSelectedSize.variationId
     )
 
     if (existingIndex !== -1) {
@@ -89,8 +89,8 @@ const ProductDetails = ({
         name: activeProduct.name,
         image: activeProduct.images[0].url,
         price: formattedPrice.mainPrice,
-        color: filterSelectedColor.color,
-        size: filterSelectedSize.size,
+        color: filterSelectedColor,
+        size: filterSelectedSize,
         quantity: 1
       }
       storedCart.push(newItem)
