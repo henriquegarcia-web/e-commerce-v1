@@ -14,20 +14,17 @@ import {
 } from '@heroicons/react/20/solid'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
-import { handleGetFilteredProducts } from '@/utils/functions/filters'
+import {
+  handleConvertToFilters,
+  handleGetColorFilter,
+  handleGetFilteredProducts,
+  handleGetSizeFilter
+} from '@/utils/functions/filters'
 import { mergeClasses } from '@/utils/functions/mergeClasses'
 
 import { useStore } from '@/contexts/StoreProvider'
 
-import {
-  ICategory,
-  IFilter,
-  IFilterColor,
-  IFilterOption,
-  IFilterSize,
-  IProduct,
-  ProductListType
-} from '@/@types/store'
+import { ICategory, IFilter, IProduct, ProductListType } from '@/@types/store'
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -71,7 +68,6 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
       productsList,
       selectedFilters
     )
-
     setCurrentProductsList(filteredProducts || productsList)
   }
 
@@ -80,7 +76,7 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
     setCurrentProductsList(productsList)
   }
 
-  const handleFilterSelection = (filterValue: string) => {
+  const handleFilterSelect = (filterValue: string) => {
     setSelectedFilters((prevFilters) => {
       if (prevFilters.includes(filterValue)) {
         return prevFilters.filter((filter) => filter !== filterValue)
@@ -90,70 +86,20 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
     })
   }
 
-  const convertToFilters = (colors: IFilterColor[], sizes: IFilterSize[]) => {
-    const colorOptions = colors.map((color) => ({
-      value: color.variationId,
-      label: color.name
-    }))
-    const sizeOptions = sizes.map((size) => ({
-      value: size.variationId,
-      label: size.size
-    }))
-    return [
-      { id: 'color', name: 'Cor', options: colorOptions },
-      { id: 'size', name: 'Tamanho', options: sizeOptions }
-    ]
-  }
-
   const filters = useMemo(() => {
-    const allColors = productsList?.reduce(
-      (acc: IFilterColor[], product: IProduct) => {
-        product.variations.forEach((variation) => {
-          if (!acc.some((c) => c.variationId === variation.variationId)) {
-            acc.push({
-              variationId: variation.variationId,
-              name: variation.name,
-              color: variation.color
-            })
-          }
-        })
-        return acc
-      },
-      []
-    )
+    const filterColors = handleGetColorFilter(productsList)
+    const filterSizes = handleGetSizeFilter(productsList)
 
-    const allSizes = productsList?.reduce(
-      (acc: IFilterSize[], product: IProduct) => {
-        product.variations.forEach((variation) => {
-          variation.sizes.forEach((size) => {
-            if (!acc.some((s) => s.variationId === size.variationId)) {
-              acc.push({
-                variationId: size.variationId,
-                size: size.size
-              })
-            }
-          })
-        })
-        return acc
-      },
-      []
-    )
-
-    return convertToFilters(allColors || [], allSizes || [])
+    return handleConvertToFilters(filterColors || [], filterSizes || [])
   }, [productsList])
 
-  // ============================================================
+  console.log(filters)
 
-  useEffect(() => {
-    console.log(currentProductsList)
-    // console.log(allColors)
-    // console.log(allSizes)
-  }, [currentProductsList])
+  // ============================================================
 
   return (
     <div className="bg-white">
       <div>
-        {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
           <Dialog
             as="div"
@@ -198,74 +144,13 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
                   </div>
 
                   {/* Filters */}
-                  <form className="mt-4 border-t border-gray-200">
-                    {filters?.map((section) => (
-                      <Disclosure
-                        as="div"
-                        key={section.id}
-                        className="border-t border-gray-200 px-4 py-6"
-                      >
-                        {({ open }) => (
-                          <>
-                            <h3 className="-mx-2 -my-3 flow-root">
-                              <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-                                <span className="font-medium text-gray-900">
-                                  {section.name}
-                                </span>
-                                <span className="ml-6 flex items-center">
-                                  {open ? (
-                                    <MinusIcon
-                                      className="h-5 w-5"
-                                      aria-hidden="true"
-                                    />
-                                  ) : (
-                                    <PlusIcon
-                                      className="h-5 w-5"
-                                      aria-hidden="true"
-                                    />
-                                  )}
-                                </span>
-                              </Disclosure.Button>
-                            </h3>
-                            <Disclosure.Panel className="pt-6">
-                              <div className="space-y-6">
-                                {section.options.map((option, optionIdx) => (
-                                  <div
-                                    key={option.value}
-                                    className="flex items-center"
-                                  >
-                                    <input
-                                      id={`filter-mobile-${section.id}-${optionIdx}`}
-                                      name={`${section.id}[]`}
-                                      defaultValue={option.value}
-                                      type="checkbox"
-                                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                      onChange={() =>
-                                        handleFilterSelection(option.value)
-                                      }
-                                      checked={selectedFilters.includes(
-                                        option.value
-                                      )}
-                                    />
-                                    <label
-                                      htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-                                      className="ml-3 min-w-0 flex-1 text-gray-500"
-                                    >
-                                      {option.label}
-                                    </label>
-                                  </div>
-                                ))}
-                              </div>
-                            </Disclosure.Panel>
-                          </>
-                        )}
-                      </Disclosure>
-                    ))}
-
-                    <div className="w-full p-4">
-                      <Button label="Aplicar" />
-                    </div>
-                  </form>
+                  <MobileFilters
+                    filters={filters}
+                    selectedFilters={selectedFilters}
+                    handleFilterSelect={handleFilterSelect}
+                    clearFilters={clearFilters}
+                    applyFilters={applyFilters}
+                  />
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -348,82 +233,14 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
             </h2>
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-              {/* Filters */}
-              <form className="hidden lg:block">
-                {filters?.map((section) => (
-                  <Disclosure
-                    as="div"
-                    key={section.id}
-                    className="border-b border-gray-200 py-6"
-                  >
-                    {({ open }) => (
-                      <>
-                        <h3 className="-my-3 flow-root">
-                          <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                            <span className="font-medium text-gray-900">
-                              {section.name}
-                            </span>
-                            <span className="ml-6 flex items-center">
-                              {open ? (
-                                <MinusIcon
-                                  className="h-5 w-5"
-                                  aria-hidden="true"
-                                />
-                              ) : (
-                                <PlusIcon
-                                  className="h-5 w-5"
-                                  aria-hidden="true"
-                                />
-                              )}
-                            </span>
-                          </Disclosure.Button>
-                        </h3>
-                        <Disclosure.Panel className="pt-6">
-                          <div className="space-y-4">
-                            {section.options.map((option, optionIdx) => (
-                              <div
-                                key={option.value}
-                                className="flex items-center"
-                              >
-                                <input
-                                  id={`filter-${section.id}-${optionIdx}`}
-                                  name={`${section.id}[]`}
-                                  defaultValue={option.value}
-                                  type="checkbox"
-                                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                  onChange={() =>
-                                    handleFilterSelection(option.value)
-                                  }
-                                  checked={selectedFilters.includes(
-                                    option.value
-                                  )}
-                                />
-                                <label
-                                  htmlFor={`filter-${section.id}-${optionIdx}`}
-                                  className="ml-3 text-sm text-gray-600"
-                                >
-                                  {option.label}
-                                </label>
-                              </div>
-                            ))}
-                          </div>
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
-                ))}
-
-                <div className="flex flex-col w-full gap-y-2 mt-6">
-                  {!!selectedFilters.length && (
-                    <Button
-                      label="Remover filtros"
-                      inverted
-                      onClick={clearFilters}
-                    />
-                  )}
-                  <Button label="Aplicar" onClick={applyFilters} />
-                </div>
-              </form>
+              {/* DESKTOP FILTERS */}
+              <DesktopFilters
+                filters={filters}
+                selectedFilters={selectedFilters}
+                handleFilterSelect={handleFilterSelect}
+                clearFilters={clearFilters}
+                applyFilters={applyFilters}
+              />
 
               <div className="lg:col-span-3">
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
@@ -441,3 +258,161 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
 }
 
 export default ProductsList
+
+// ============================================== DESKTOP FILTERS
+
+interface IDesktopFilters {
+  filters: IFilter[]
+  selectedFilters: string[]
+  handleFilterSelect: (filterValue: string) => void
+  clearFilters: () => void
+  applyFilters: () => void
+}
+
+const DesktopFilters = ({
+  filters,
+  selectedFilters,
+  handleFilterSelect,
+  clearFilters,
+  applyFilters
+}: IDesktopFilters) => {
+  return (
+    <form className="hidden lg:block">
+      {filters?.map((section) => (
+        <Disclosure
+          as="div"
+          key={section.id}
+          className="border-b border-gray-200 py-6"
+        >
+          {({ open }) => (
+            <>
+              <h3 className="-my-3 flow-root">
+                <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                  <span className="font-medium text-gray-900">
+                    {section.name}
+                  </span>
+                  <span className="ml-6 flex items-center">
+                    {open ? (
+                      <MinusIcon className="h-5 w-5" aria-hidden="true" />
+                    ) : (
+                      <PlusIcon className="h-5 w-5" aria-hidden="true" />
+                    )}
+                  </span>
+                </Disclosure.Button>
+              </h3>
+              <Disclosure.Panel className="pt-6">
+                <div className="space-y-4">
+                  {section.options.map((option, optionIdx) => (
+                    <div key={option.value} className="flex items-center">
+                      <input
+                        id={`filter-${section.id}-${optionIdx}`}
+                        name={`${section.id}[]`}
+                        defaultValue={option.value}
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        onChange={() => handleFilterSelect(option.value)}
+                        checked={selectedFilters.includes(option.value)}
+                      />
+                      <label
+                        htmlFor={`filter-${section.id}-${optionIdx}`}
+                        className="ml-3 text-sm text-gray-600"
+                      >
+                        {option.label}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </Disclosure.Panel>
+            </>
+          )}
+        </Disclosure>
+      ))}
+
+      <div className="flex flex-col w-full gap-y-2 mt-6">
+        {!!selectedFilters.length && (
+          <Button label="Remover filtros" inverted onClick={clearFilters} />
+        )}
+        <Button label="Aplicar" onClick={applyFilters} />
+      </div>
+    </form>
+  )
+}
+
+// ============================================== MOBILE FILTERS
+
+interface IMobileFilters {
+  filters: IFilter[]
+  selectedFilters: string[]
+  handleFilterSelect: (filterValue: string) => void
+  clearFilters: () => void
+  applyFilters: () => void
+}
+
+const MobileFilters = ({
+  filters,
+  selectedFilters,
+  handleFilterSelect,
+  clearFilters,
+  applyFilters
+}: IMobileFilters) => {
+  return (
+    <form className="mt-4 border-t border-gray-200">
+      {filters?.map((section) => (
+        <Disclosure
+          as="div"
+          key={section.id}
+          className="border-t border-gray-200 px-4 py-6"
+        >
+          {({ open }) => (
+            <>
+              <h3 className="-mx-2 -my-3 flow-root">
+                <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+                  <span className="font-medium text-gray-900">
+                    {section.name}
+                  </span>
+                  <span className="ml-6 flex items-center">
+                    {open ? (
+                      <MinusIcon className="h-5 w-5" aria-hidden="true" />
+                    ) : (
+                      <PlusIcon className="h-5 w-5" aria-hidden="true" />
+                    )}
+                  </span>
+                </Disclosure.Button>
+              </h3>
+              <Disclosure.Panel className="pt-6">
+                <div className="space-y-6">
+                  {section.options.map((option, optionIdx) => (
+                    <div key={option.value} className="flex items-center">
+                      <input
+                        id={`filter-mobile-${section.id}-${optionIdx}`}
+                        name={`${section.id}[]`}
+                        defaultValue={option.value}
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        onChange={() => handleFilterSelect(option.value)}
+                        checked={selectedFilters.includes(option.value)}
+                      />
+                      <label
+                        htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
+                        className="ml-3 min-w-0 flex-1 text-gray-500"
+                      >
+                        {option.label}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </Disclosure.Panel>
+            </>
+          )}
+        </Disclosure>
+      ))}
+
+      <div className="flex flex-col w-full gap-y-2 p-4">
+        {!!selectedFilters.length && (
+          <Button label="Remover filtros" inverted onClick={clearFilters} />
+        )}
+        <Button label="Aplicar" onClick={applyFilters} />
+      </div>
+    </form>
+  )
+}

@@ -1,4 +1,9 @@
-import { ProductListType } from '@/@types/store'
+import {
+  IFilterColor,
+  IFilterSize,
+  IProduct,
+  ProductListType
+} from '@/@types/store'
 
 const handleGetFilteredProducts = (
   productsList: ProductListType,
@@ -27,4 +32,68 @@ const handleGetFilteredProducts = (
   return filteredProducts
 }
 
-export { handleGetFilteredProducts }
+const handleConvertToFilters = (
+  colors: IFilterColor[],
+  sizes: IFilterSize[]
+) => {
+  const colorOptions = colors.map((color) => ({
+    value: color.variationId,
+    label: color.name
+  }))
+  const sizeOptions = sizes.map((size) => ({
+    value: size.variationId,
+    label: size.size
+  }))
+  return [
+    { id: 'color', name: 'Cor', options: colorOptions },
+    { id: 'size', name: 'Tamanho', options: sizeOptions }
+  ]
+}
+
+const handleGetColorFilter = (productsList: ProductListType) => {
+  const allColors = productsList?.reduce(
+    (acc: IFilterColor[], product: IProduct) => {
+      product.variations.forEach((variation) => {
+        if (!acc.some((c) => c.variationId === variation.variationId)) {
+          acc.push({
+            variationId: variation.variationId,
+            name: variation.name,
+            color: variation.color
+          })
+        }
+      })
+      return acc
+    },
+    []
+  )
+
+  return allColors
+}
+
+const handleGetSizeFilter = (productsList: ProductListType) => {
+  const allSizes = productsList?.reduce(
+    (acc: IFilterSize[], product: IProduct) => {
+      product.variations.forEach((variation) => {
+        variation.sizes.forEach((size) => {
+          if (!acc.some((s) => s.variationId === size.variationId)) {
+            acc.push({
+              variationId: size.variationId,
+              size: size.size
+            })
+          }
+        })
+      })
+      return acc
+    },
+    []
+  )
+
+  return allSizes
+}
+
+export {
+  handleGetFilteredProducts,
+  handleConvertToFilters,
+  handleGetColorFilter,
+  handleGetSizeFilter
+}
