@@ -9,6 +9,8 @@ import UserSettings from './common/UserSettings'
 import IconButton from './common/IconButton'
 import Modal from './common/Modal'
 import Button from './common/Button'
+import HeroBanner from './common/HeroBanner'
+import OffersBanner from './common/OffersBanner'
 
 // ==> CATEGORY COMPONENTS
 
@@ -43,6 +45,8 @@ export {
   IconButton,
   Modal,
   Button,
+  HeroBanner,
+  OffersBanner,
   MobileFilters,
   DesktopFilters,
   ProductCard,
