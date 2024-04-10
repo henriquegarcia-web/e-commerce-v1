@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-import { MiniCart, SearchBar } from '@/components'
+import { Logo, MiniCart, SearchBar } from '@/components'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 
 import { useStore } from '@/contexts/StoreProvider'
@@ -32,11 +32,12 @@ const Header = () => {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img
+            {/* <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               alt=""
-            />
+            /> */}
+            <Logo />
           </Link>
         </div>
 
