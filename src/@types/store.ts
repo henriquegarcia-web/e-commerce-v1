@@ -59,6 +59,9 @@ export interface IProductMainInfo {
 
 export interface IFormattedPrice {
   isOffer: boolean
+  offerDiscount: number
+  offerDescription: string
+  offerPrice: string
   mainPrice: string
   installmentsPrice: string
   cashPrice: string

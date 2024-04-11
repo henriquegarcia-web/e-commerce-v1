@@ -131,7 +131,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     [categoriesData]
   )
 
-  const formatPrice = (priceInfos: IPrice) => {
+  const handleFormatPrice = (priceInfos: IPrice) => {
     const isOffer = priceInfos.sale.active
 
     const discountMultiplier = (100 - priceInfos.sale.discount) / 100
@@ -144,6 +144,9 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 
     return {
       isOffer,
+      offerDiscount: priceInfos.sale.discount,
+      offerDescription: priceInfos.sale.description,
+      offerPrice: `De ${formatCurrency(priceInfos.price)} por`,
       mainPrice: formatCurrency(mainPrice),
       installmentsPrice: `${installments} x de ${formatCurrency(installmentsPrice)}`,
       cashPrice: `ou ${formatCurrency(cashPrice)} à vista`
@@ -238,7 +241,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
       handleFindProductBySlug,
       handleFilterProducts,
       getBreadcrumb,
-      formatPrice,
+      handleFormatPrice,
       handleDeleteFavoriteItem,
       handleAddProductToFavorites,
       handleGetFavoritesItems,

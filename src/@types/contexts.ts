@@ -23,7 +23,7 @@ export interface IStoreContextData {
   ) => IProduct[] | null
   handleFindProductBySlug: (slug: string | null) => IProduct | null
   handleFilterProducts: (searchTerm: string) => IProduct[] | null
-  formatPrice: (priceInfos: IPrice) => IFormattedPrice
+  handleFormatPrice: (priceInfos: IPrice) => IFormattedPrice
   getBreadcrumb: (categoryId: string) => IBreadcrumbData | null
   handleAddProductToFavorites: (activeProduct: IProduct | null) => void
   handleDeleteFavoriteItem: (productId: string) => void

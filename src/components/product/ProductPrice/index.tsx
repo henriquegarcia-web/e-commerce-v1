@@ -7,14 +7,19 @@ interface IProductPrice {
 }
 
 const ProductPrice = ({ priceInfos }: IProductPrice) => {
-  const { formatPrice } = useStore()
+  const { handleFormatPrice } = useStore()
 
   if (!priceInfos) return <></>
 
-  const formattedPrice = formatPrice(priceInfos)
+  const formattedPrice = handleFormatPrice(priceInfos)
 
   return (
     <div className="flex flex-col gap-y-[2px]">
+      {formattedPrice.isOffer && (
+        <p className="text-xs font-semibold text-gray-500">
+          {formattedPrice.offerPrice}
+        </p>
+      )}
       <p className="text-3xl font-extrabold text-gray-900 mb-1">
         {formattedPrice.mainPrice}
       </p>

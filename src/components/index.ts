@@ -11,6 +11,7 @@ import Modal from './common/Modal'
 import Button from './common/Button'
 import HeroBanner from './common/HeroBanner'
 import OffersBanner from './common/OffersBanner'
+import OfferBadge from './common/OfferBadge'
 
 // ==> CATEGORY COMPONENTS
 
@@ -48,6 +49,7 @@ export {
   Button,
   HeroBanner,
   OffersBanner,
+  OfferBadge,
   MobileFilters,
   DesktopFilters,
   ProductCard,

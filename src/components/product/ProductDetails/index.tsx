@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 
 import {
   Breadcrumb,
+  OfferBadge,
   ProductImageSlider,
   ProductMainInfos,
   ProductPrice,
@@ -79,7 +80,10 @@ const ProductDetails = ({
         <Breadcrumb category={activeCategory} />
 
         <div className="grid grid-cols-1 gap-x-14 gap-y-10 lg:grid-cols-2">
-          <div className="flex flex-1">
+          <div className="relative flex flex-1">
+            {activeProduct?.price.sale.active && (
+              <OfferBadge offerValue={activeProduct?.price.sale.discount} />
+            )}
             <ProductImageSlider imagesData={activeProduct?.images} />
           </div>
           <div className="flex flex-1 flex-col gap-y-6">

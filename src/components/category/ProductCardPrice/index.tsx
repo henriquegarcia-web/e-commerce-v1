@@ -9,9 +9,9 @@ interface IProductCardPrice {
 }
 
 const ProductCardPrice = ({ priceInfos }: IProductCardPrice) => {
-  const { formatPrice } = useStore()
+  const { handleFormatPrice } = useStore()
 
-  const formattedPrice = formatPrice(priceInfos)
+  const formattedPrice = handleFormatPrice(priceInfos)
 
   return (
     <div className="flex flex-col gap-y-[2px]">
