@@ -39,6 +39,7 @@ const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
     useStore()
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [loadingFilters, setLoadingFilters] = useState(false)
 
   const [productsList, setProductsList] = useState<ProductListType>(null)
   const [currentProductsList, setCurrentProductsList] =
@@ -74,17 +75,25 @@ const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
 
   // ============================================================ FILTROS
 
-  const applyFilters = () => {
-    const filteredProducts = handleGetFilteredProducts(
-      productsList,
-      selectedFilters
-    )
-    setCurrentProductsList(filteredProducts || productsList)
+  const handleApplyFilters = () => {
+    setLoadingFilters(true)
+    setTimeout(() => {
+      const filteredProducts = handleGetFilteredProducts(
+        productsList,
+        selectedFilters
+      )
+      setCurrentProductsList(filteredProducts || productsList)
+      setLoadingFilters(false)
+    }, 2000)
   }
 
-  const clearFilters = () => {
-    setSelectedFilters([])
-    setCurrentProductsList(productsList)
+  const handleClearFilters = () => {
+    setLoadingFilters(true)
+    setTimeout(() => {
+      setSelectedFilters([])
+      setCurrentProductsList(productsList)
+      setLoadingFilters(false)
+    }, 2000)
   }
 
   const handleFilterSelect = (filterValue: string) => {
@@ -128,11 +137,12 @@ const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
           setMobileFiltersOpen={setMobileFiltersOpen}
         >
           <MobileFilters
+            loadingFilters={loadingFilters}
             filters={filters}
             selectedFilters={selectedFilters}
             handleFilterSelect={handleFilterSelect}
-            clearFilters={clearFilters}
-            applyFilters={applyFilters}
+            handleClearFilters={handleClearFilters}
+            handleApplyFilters={handleApplyFilters}
           />
         </MobileModalFilters>
 
@@ -172,11 +182,12 @@ const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               <DesktopFilters
+                loadingFilters={loadingFilters}
                 filters={filters}
                 selectedFilters={selectedFilters}
                 handleFilterSelect={handleFilterSelect}
-                clearFilters={clearFilters}
-                applyFilters={applyFilters}
+                handleClearFilters={handleClearFilters}
+                handleApplyFilters={handleApplyFilters}
               />
 
               <div className="lg:col-span-3">

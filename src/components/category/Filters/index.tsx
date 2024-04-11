@@ -10,19 +10,21 @@ import { IFilter } from '@/@types/store'
 // ============================================== DESKTOP FILTERS
 
 interface IDesktopFilters {
+  loadingFilters: boolean
   filters: IFilter[]
   selectedFilters: string[]
   handleFilterSelect: (filterValue: string) => void
-  clearFilters: () => void
-  applyFilters: () => void
+  handleClearFilters: () => void
+  handleApplyFilters: () => void
 }
 
 const DesktopFilters = ({
+  loadingFilters,
   filters,
   selectedFilters,
   handleFilterSelect,
-  clearFilters,
-  applyFilters
+  handleClearFilters,
+  handleApplyFilters
 }: IDesktopFilters) => {
   return (
     <form className="hidden lg:block">
@@ -78,9 +80,18 @@ const DesktopFilters = ({
 
       <div className="flex flex-col w-full gap-y-2 mt-6">
         {!!selectedFilters.length && (
-          <Button label="Remover filtros" inverted onClick={clearFilters} />
+          <Button
+            label="Remover filtros"
+            inverted
+            disabled={loadingFilters}
+            onClick={handleClearFilters}
+          />
         )}
-        <Button label="Aplicar" onClick={applyFilters} />
+        <Button
+          label="Aplicar"
+          loading={loadingFilters}
+          onClick={handleApplyFilters}
+        />
       </div>
     </form>
   )
@@ -89,19 +100,21 @@ const DesktopFilters = ({
 // ============================================== MOBILE FILTERS
 
 interface IMobileFilters {
+  loadingFilters: boolean
   filters: IFilter[]
   selectedFilters: string[]
   handleFilterSelect: (filterValue: string) => void
-  clearFilters: () => void
-  applyFilters: () => void
+  handleClearFilters: () => void
+  handleApplyFilters: () => void
 }
 
 const MobileFilters = ({
+  loadingFilters,
   filters,
   selectedFilters,
   handleFilterSelect,
-  clearFilters,
-  applyFilters
+  handleClearFilters,
+  handleApplyFilters
 }: IMobileFilters) => {
   return (
     <form className="mt-4 border-t border-gray-200">
@@ -157,9 +170,18 @@ const MobileFilters = ({
 
       <div className="flex flex-col w-full gap-y-2 p-4">
         {!!selectedFilters.length && (
-          <Button label="Remover filtros" inverted onClick={clearFilters} />
+          <Button
+            label="Remover filtros"
+            inverted
+            disabled={loadingFilters}
+            onClick={handleClearFilters}
+          />
         )}
-        <Button label="Aplicar" onClick={applyFilters} />
+        <Button
+          label="Aplicar"
+          loading={loadingFilters}
+          onClick={handleApplyFilters}
+        />
       </div>
     </form>
   )
