@@ -1,15 +1,17 @@
 {
-  "name": "server",
+  "name": "store-azcapital-test-server",
   "version": "1.0.0",
   "description": "",
   "main": "api/server.js",
   "scripts": {
     "start": "node api/server.js",
+    "dev": "nodemon api/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.17.4"
+    "json-server": "^0.17.4",
+    "nodemon": "^3.1.0"
   }
 }
