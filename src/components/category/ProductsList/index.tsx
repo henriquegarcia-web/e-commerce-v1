@@ -7,6 +7,8 @@ import {
   MobileFilters,
   ProductCard,
   ProductListEmpty,
+  ProductListHeaderSkeleton,
+  ProductListSkeleton,
   Sort
 } from '@/components'
 import { Dialog, Transition } from '@headlessui/react'
@@ -103,7 +105,7 @@ const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
   }, [productsList])
 
   const sortedProductsList = useMemo(() => {
-    if (!currentProductsList) return []
+    if (!currentProductsList) return null
 
     return currentProductsList
       .slice()
@@ -115,6 +117,8 @@ const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
   }
 
   // ============================================================
+
+  const isProductListLoading = !activeCategory || !currentProductsList
 
   return (
     <div className="bg-white">
@@ -135,7 +139,13 @@ const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-12">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              {!!searchTerm ? 'Resultados' : activeCategory?.name}
+              {isProductListLoading ? (
+                <ProductListHeaderSkeleton />
+              ) : !!searchTerm ? (
+                'Resultados'
+              ) : (
+                activeCategory?.name
+              )}
             </h1>
 
             <div className="z-15 flex items-center">
@@ -170,7 +180,9 @@ const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
               />
 
               <div className="lg:col-span-3">
-                {!!sortedProductsList.length ? (
+                {!activeCategory || !currentProductsList ? (
+                  <ProductListSkeleton />
+                ) : !!sortedProductsList ? (
                   <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                     {sortedProductsList?.map((product: IProduct) => (
                       <ProductCard key={product.id} productInfos={product} />

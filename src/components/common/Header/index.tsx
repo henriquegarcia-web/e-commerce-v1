@@ -6,7 +6,12 @@ import Link from 'next/link'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-import { Logo, MiniCart, SearchBar } from '@/components'
+import {
+  HeaderNavigationSkeleton,
+  Logo,
+  MiniCart,
+  SearchBar
+} from '@/components'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 
 import { useStore } from '@/contexts/StoreProvider'
@@ -66,7 +71,11 @@ const Header = () => {
         className="hidden lg:flex w-full max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
         aria-label="Navigation Header"
       >
-        <DesktopNavigation categoriesData={categoriesData} />
+        {!categoriesData ? (
+          <HeaderNavigationSkeleton />
+        ) : (
+          <DesktopNavigation categoriesData={categoriesData} />
+        )}
       </nav>
 
       {/* ================================================= MOBILE HEADER */}
@@ -85,13 +94,13 @@ export default Header
 // ============================================== DESKTOP NAVIGATION
 
 interface IDesktopNavigation {
-  categoriesData: ICategoryGroup[] | null
+  categoriesData: ICategoryGroup[]
 }
 
 const DesktopNavigation = ({ categoriesData }: IDesktopNavigation) => {
   return (
     <Popover.Group className="flex lg:gap-x-8">
-      {categoriesData?.map((categoryGroup: ICategoryGroup) => {
+      {categoriesData.map((categoryGroup: ICategoryGroup) => {
         const isDisabledCategoryGroup =
           !categoryGroup.categories.length || !categoryGroup.active
 

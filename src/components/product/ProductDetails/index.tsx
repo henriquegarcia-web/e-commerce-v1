@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react'
 import {
   Breadcrumb,
   OfferBadge,
+  ProductDetailsSkeleton,
   ProductImageSlider,
   ProductMainInfos,
   ProductPrice,
@@ -70,7 +71,7 @@ const ProductDetails = ({
     handleAddProductToFavorites(activeProduct)
   }
 
-  if (productPageLoading) return <></>
+  if (productPageLoading) return <ProductDetailsSkeleton />
 
   return (
     <div className="bg-white">

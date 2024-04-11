@@ -35,6 +35,14 @@ import ProductDetails from './product/ProductDetails'
 import ProductReviews from './product/ProductReviews'
 import BuyButton from './product/BuyButton'
 
+// ==> SKELETONS
+
+import ProductListSkeleton, {
+  ProductListHeaderSkeleton
+} from './skeletons/ProductListSkeleton'
+import HeaderNavigationSkeleton from './skeletons/HeaderNavigationSkeleton'
+import ProductDetailsSkeleton from './skeletons/ProductDetailsSkeleton'
+
 // ==> EXPORTS
 
 export {
@@ -66,5 +74,9 @@ export {
   ProductRate,
   ProductDetails,
   ProductReviews,
-  BuyButton
+  BuyButton,
+  ProductListSkeleton,
+  ProductListHeaderSkeleton,
+  HeaderNavigationSkeleton,
+  ProductDetailsSkeleton
 }
