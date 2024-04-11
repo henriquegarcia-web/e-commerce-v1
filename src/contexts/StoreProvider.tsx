@@ -44,7 +44,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 
   // ========================================================================
 
-  const fetchStoreData = async () => {
+  const handleFetchStoreData = async () => {
     try {
       setStoreDataIsLoading(true)
 
@@ -64,7 +64,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  const findCategoryBySlug = useCallback(
+  const handleFindCategoryBySlug = useCallback(
     (slug: string | null) => {
       if (!categoriesData || !slug) return null
 
@@ -84,7 +84,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     [categoriesData]
   )
 
-  const findProductsListByCategoryId = useCallback(
+  const handleFindProductsListByCategoryId = useCallback(
     (categoryId: string | null) => {
       if (!productsData || !categoryId) return []
 
@@ -97,7 +97,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     [productsData]
   )
 
-  const findProductBySlug = useCallback(
+  const handleFindProductBySlug = useCallback(
     (slug: string | null) => {
       if (!productsData || !slug) return null
 
@@ -149,6 +149,17 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
       cashPrice: `ou ${formatCurrency(cashPrice)} à vista`
     }
   }
+
+  const handleFilterProducts = useCallback(
+    (searchTerm: string) => {
+      if (!productsData || !searchTerm) return null
+
+      return productsData.filter((product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    },
+    [productsData]
+  )
 
   // ======================================================================== FAVORITES
 
@@ -211,7 +222,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   // ========================================================================
 
   useEffect(() => {
-    fetchStoreData()
+    handleFetchStoreData()
     handleGetFavoritesItems()
   }, [])
 
@@ -222,9 +233,10 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
       storeDataIsLoading,
       categoriesData,
       productsData,
-      findCategoryBySlug,
-      findProductsListByCategoryId,
-      findProductBySlug,
+      handleFindCategoryBySlug,
+      handleFindProductsListByCategoryId,
+      handleFindProductBySlug,
+      handleFilterProducts,
       getBreadcrumb,
       formatPrice,
       handleDeleteFavoriteItem,
@@ -236,9 +248,10 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     storeDataIsLoading,
     categoriesData,
     productsData,
-    findCategoryBySlug,
-    findProductsListByCategoryId,
-    findProductBySlug,
+    handleFindCategoryBySlug,
+    handleFindProductsListByCategoryId,
+    handleFindProductBySlug,
+    handleFilterProducts,
     getBreadcrumb,
     favotitesItemsData
   ])

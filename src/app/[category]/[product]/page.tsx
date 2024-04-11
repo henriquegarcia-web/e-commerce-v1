@@ -18,7 +18,7 @@ interface Props {
 export default function ProductPage({ params }: Props) {
   const { category, product } = params
 
-  const { findCategoryBySlug, findProductBySlug } = useStore()
+  const { handleFindCategoryBySlug, handleFindProductBySlug } = useStore()
 
   const [activeCategory, setActiveCategory] = useState<ICategory | null>(null)
   const [activeProduct, setActiveProduct] = useState<IProduct | null>(null)
@@ -26,8 +26,8 @@ export default function ProductPage({ params }: Props) {
   const [productPageLoading, setProductPageLoading] = useState(true)
 
   useEffect(() => {
-    const categoryFound = findCategoryBySlug(category)
-    const productFound = findProductBySlug(product)
+    const categoryFound = handleFindCategoryBySlug(category)
+    const productFound = handleFindProductBySlug(product)
 
     if (!categoryFound || !productFound) return
 
@@ -35,7 +35,7 @@ export default function ProductPage({ params }: Props) {
     setActiveProduct(productFound)
 
     setProductPageLoading(false)
-  }, [category, product, findCategoryBySlug, findProductBySlug])
+  }, [category, product, handleFindCategoryBySlug, handleFindProductBySlug])
 
   return (
     <main className="page">

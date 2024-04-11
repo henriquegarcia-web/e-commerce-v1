@@ -17,9 +17,12 @@ export interface IStoreContextData {
   storeDataIsLoading: boolean
   categoriesData: ICategoryGroup[] | null
   productsData: IProduct[] | null
-  findCategoryBySlug: (slug: string | null) => ICategory | null
-  findProductsListByCategoryId: (categoryId: string | null) => IProduct[] | null
-  findProductBySlug: (slug: string | null) => IProduct | null
+  handleFindCategoryBySlug: (slug: string | null) => ICategory | null
+  handleFindProductsListByCategoryId: (
+    categoryId: string | null
+  ) => IProduct[] | null
+  handleFindProductBySlug: (slug: string | null) => IProduct | null
+  handleFilterProducts: (searchTerm: string) => IProduct[] | null
   formatPrice: (priceInfos: IPrice) => IFormattedPrice
   getBreadcrumb: (categoryId: string) => IBreadcrumbData | null
   handleAddProductToFavorites: (activeProduct: IProduct | null) => void

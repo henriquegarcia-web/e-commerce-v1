@@ -17,14 +17,14 @@ interface Props {
 export default function CategoryPage({ params }: Props) {
   const { category } = params
 
-  const { findCategoryBySlug } = useStore()
+  const { handleFindCategoryBySlug } = useStore()
 
   const [activeCategory, setActiveCategory] = useState<ICategory | null>(null)
 
   useEffect(() => {
-    const categoryFound = findCategoryBySlug(category)
+    const categoryFound = handleFindCategoryBySlug(category)
     setActiveCategory(categoryFound)
-  }, [category, findCategoryBySlug])
+  }, [category, handleFindCategoryBySlug])
 
   return (
     <main className="page">

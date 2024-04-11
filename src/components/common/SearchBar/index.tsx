@@ -1,6 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+
+import { IoSearchOutline } from 'react-icons/io5'
 
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -16,30 +19,20 @@ import { IStoreSearch } from '@/@types/forms'
 interface ISearchBar {}
 
 const SearchBar = ({}: ISearchBar) => {
-  const [searchIsLoading, setSearchIsLoading] = useState(false)
+  const router = useRouter()
 
-  const { control, handleSubmit, reset } = useForm<IStoreSearch>({
+  const { control, handleSubmit, reset, formState } = useForm<IStoreSearch>({
     defaultValues: { userSearch: '' },
     mode: 'onBlur',
     resolver: yupResolver(searchSchema)
   })
 
+  const { isValid } = formState
+
   const handleSearchForm = async (data: IStoreSearch) => {
-    setSearchIsLoading(true)
+    if (!isValid) return
 
-    try {
-      // const response = await handleSignin(data)
-      const response = true
-
-      if (response) {
-        // navigate('/chat')
-        reset()
-      }
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setSearchIsLoading(false)
-    }
+    router.push(`/busca/?busca=${data.userSearch}`)
   }
 
   return (
@@ -50,23 +43,10 @@ const SearchBar = ({}: ISearchBar) => {
       <span className="flex justify-center items-center w-12">
         <button
           type="submit"
-          disabled={searchIsLoading}
           className="text-gray-600 hover:text-gray-700"
+          disabled={!isValid}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-            />
-          </svg>
+          <IoSearchOutline className="text-lg" />
         </button>
       </span>
 
@@ -80,7 +60,6 @@ const SearchBar = ({}: ISearchBar) => {
             placeholder="O que você procura?"
             className="w-full border-blue-200 py-2.5 pe-10 text-black bg-transparent focus-visible:outline-none sm:text-sm"
             autoComplete="off"
-            disabled={searchIsLoading}
           />
         )}
       />

@@ -2,7 +2,13 @@
 
 import React, { Fragment, useEffect, useMemo, useState } from 'react'
 
-import { DesktopFilters, MobileFilters, ProductCard, Sort } from '@/components'
+import {
+  DesktopFilters,
+  MobileFilters,
+  ProductCard,
+  ProductListEmpty,
+  Sort
+} from '@/components'
 import { Dialog, Transition } from '@headlessui/react'
 
 import { FunnelIcon } from '@heroicons/react/20/solid'
@@ -22,11 +28,13 @@ import { ICategory, IProduct, ProductListType } from '@/@types/store'
 import { SetStateBooleanType } from '@/@types/globals'
 
 interface IProductsList {
-  activeCategory: ICategory | null
+  activeCategory?: ICategory | null
+  searchTerm?: string | null
 }
 
-const ProductsList = ({ activeCategory }: IProductsList) => {
-  const { findProductsListByCategoryId } = useStore()
+const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
+  const { handleFilterProducts, handleFindProductsListByCategoryId } =
+    useStore()
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
@@ -38,14 +46,25 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
   const [selectedSortOption, setSelectedSortOption] = useState('name-az')
 
   useEffect(() => {
+    if (!!searchTerm) {
+      const filteredProductsList = handleFilterProducts(searchTerm)
+      setProductsList(filteredProductsList)
+      return
+    }
+
     if (!activeCategory) {
       setProductsList([])
       return
     }
 
-    const products = findProductsListByCategoryId(activeCategory.id)
+    const products = handleFindProductsListByCategoryId(activeCategory.id)
     setProductsList(products)
-  }, [activeCategory, findProductsListByCategoryId])
+  }, [
+    searchTerm,
+    activeCategory,
+    handleFilterProducts,
+    handleFindProductsListByCategoryId
+  ])
 
   useEffect(() => {
     setCurrentProductsList(productsList)
@@ -116,7 +135,7 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-12">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              {activeCategory?.name}
+              {!!searchTerm ? 'Resultados' : activeCategory?.name}
             </h1>
 
             <div className="z-15 flex items-center">
@@ -151,11 +170,15 @@ const ProductsList = ({ activeCategory }: IProductsList) => {
               />
 
               <div className="lg:col-span-3">
-                <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                  {sortedProductsList?.map((product: IProduct) => (
-                    <ProductCard key={product.id} productInfos={product} />
-                  ))}
-                </div>
+                {!!sortedProductsList.length ? (
+                  <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                    {sortedProductsList?.map((product: IProduct) => (
+                      <ProductCard key={product.id} productInfos={product} />
+                    ))}
+                  </div>
+                ) : (
+                  <ProductListEmpty />
+                )}
               </div>
             </div>
           </section>
