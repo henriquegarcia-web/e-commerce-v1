@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import { Alert, Header, ProductDetails } from '@/components'
+import { Alert, Header, NotFound, ProductDetails } from '@/components'
 
 import { useStore } from '@/contexts/StoreProvider'
 
@@ -30,8 +30,6 @@ export default function ProductPage({ params }: Props) {
     const categoryFound = handleFindCategoryBySlug(category)
     const productFound = handleFindProductBySlug(product)
 
-    if (!categoryFound || !productFound) return
-
     setActiveCategory(categoryFound)
     setActiveProduct(productFound)
 
@@ -41,11 +39,16 @@ export default function ProductPage({ params }: Props) {
   return (
     <main className="page">
       <Header />
-      <ProductDetails
-        productPageLoading={productPageLoading}
-        activeCategory={activeCategory}
-        activeProduct={activeProduct}
-      />
+
+      {(!activeCategory || !activeProduct) && !productPageLoading ? (
+        <NotFound />
+      ) : (
+        <ProductDetails
+          productPageLoading={productPageLoading}
+          activeCategory={activeCategory}
+          activeProduct={activeProduct}
+        />
+      )}
 
       {alertData && <Alert alertData={alertData} />}
     </main>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import { Header, ProductsList } from '@/components'
+import { Header, NotFound, ProductsList } from '@/components'
 
 import { useStore } from '@/contexts/StoreProvider'
 
@@ -21,15 +21,24 @@ export default function CategoryPage({ params }: Props) {
 
   const [activeCategory, setActiveCategory] = useState<ICategory | null>(null)
 
+  const [listingPageLoading, setListingPageLoading] = useState(true)
+
   useEffect(() => {
     const categoryFound = handleFindCategoryBySlug(category)
+
     setActiveCategory(categoryFound)
+    setListingPageLoading(false)
   }, [category, handleFindCategoryBySlug])
 
   return (
     <main className="page">
       <Header />
-      <ProductsList activeCategory={activeCategory} />
+
+      {!activeCategory && !listingPageLoading ? (
+        <NotFound />
+      ) : (
+        <ProductsList activeCategory={activeCategory} />
+      )}
     </main>
   )
 }

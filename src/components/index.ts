@@ -13,6 +13,7 @@ import Button from './common/Button'
 import HeroBanner from './common/HeroBanner'
 import OffersBanner from './common/OffersBanner'
 import OfferBadge from './common/OfferBadge'
+import NotFound from './common/NotFound'
 
 // ==> CATEGORY COMPONENTS
 
@@ -60,6 +61,7 @@ export {
   HeroBanner,
   OffersBanner,
   OfferBadge,
+  NotFound,
   MobileFilters,
   DesktopFilters,
   ProductCard,
