@@ -19,7 +19,7 @@ export const CartContext = createContext<ICartContextData>(
 )
 
 const CartProvider = ({ children }: { children: React.ReactNode }) => {
-  const { handleFormatPrice } = useStore()
+  const { handleFormatPrice, handleShowAlert } = useStore()
 
   // ========================================================================
 
@@ -42,9 +42,12 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     filterSelectedSize: IFilterSize | null
   ) => {
     if (!activeProduct || !filterSelectedColor || !filterSelectedSize) {
-      console.error(
-        'Por favor, selecione uma cor e um tamanho antes de adicionar ao carrinho.'
-      )
+      handleShowAlert({
+        type: 'error',
+        title: 'Falha',
+        legend:
+          'Por favor, selecione uma cor e um tamanho antes de adicionar ao carrinho.'
+      })
       return
     }
 
@@ -59,7 +62,12 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
     if (existingIndex !== -1) {
       storedCart[existingIndex].quantity++
-      console.log('Item já existe no carrinho. Quantidade aumentada em 1.')
+
+      handleShowAlert({
+        type: 'alert',
+        title: 'Sucesso',
+        legend: 'Item já existe no carrinho. Quantidade aumentada em 1.'
+      })
     } else {
       const formattedPrice = handleFormatPrice(activeProduct.price)
 
@@ -73,6 +81,12 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
         quantity: 1
       }
       storedCart.push(newItem)
+
+      handleShowAlert({
+        type: 'success',
+        title: 'Sucesso',
+        legend: 'Produto adicionado ao carrinho.'
+      })
     }
 
     localStorage.setItem('cartItems', JSON.stringify(storedCart))

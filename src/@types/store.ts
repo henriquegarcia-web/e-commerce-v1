@@ -138,3 +138,9 @@ export interface ICartProduct {
 export interface IFavoriteProduct {
   productId: string
 }
+
+export interface IAlert {
+  type: 'success' | 'alert' | 'error'
+  title: string
+  legend: string
+}

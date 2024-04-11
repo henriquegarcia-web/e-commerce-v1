@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import { Header, ProductDetails } from '@/components'
+import { Alert, Header, ProductDetails } from '@/components'
 
 import { useStore } from '@/contexts/StoreProvider'
 
@@ -18,7 +18,8 @@ interface Props {
 export default function ProductPage({ params }: Props) {
   const { category, product } = params
 
-  const { handleFindCategoryBySlug, handleFindProductBySlug } = useStore()
+  const { alertData, handleFindCategoryBySlug, handleFindProductBySlug } =
+    useStore()
 
   const [activeCategory, setActiveCategory] = useState<ICategory | null>(null)
   const [activeProduct, setActiveProduct] = useState<IProduct | null>(null)
@@ -45,6 +46,8 @@ export default function ProductPage({ params }: Props) {
         activeCategory={activeCategory}
         activeProduct={activeProduct}
       />
+
+      {alertData && <Alert alertData={alertData} />}
     </main>
   )
 }

@@ -1,5 +1,6 @@
 // ==> COMMON COMPONENTS
 
+import Alert from './common/Alert'
 import Header from './common/Header'
 import Footer from './common/Footer'
 import Logo from './common/Logo'
@@ -46,6 +47,7 @@ import ProductDetailsSkeleton from './skeletons/ProductDetailsSkeleton'
 // ==> EXPORTS
 
 export {
+  Alert,
   Header,
   Footer,
   Logo,

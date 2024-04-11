@@ -1,4 +1,5 @@
 import {
+  IAlert,
   IBreadcrumbData,
   ICartProduct,
   ICategory,
@@ -14,6 +15,8 @@ import {
 // ======================================= STORE CONTEXT
 
 export interface IStoreContextData {
+  alertData: IAlert | null
+  handleShowAlert: ({ type, title, legend }: IAlert) => void
   storeDataIsLoading: boolean
   categoriesData: ICategoryGroup[] | null
   productsData: IProduct[] | null

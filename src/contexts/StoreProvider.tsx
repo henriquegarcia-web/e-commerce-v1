@@ -15,6 +15,7 @@ import { formatCurrency } from '@/utils/functions/formatCurrency'
 
 import { IStoreContextData } from '@/@types/contexts'
 import {
+  IAlert,
   ICategoryGroup,
   IFavoriteProduct,
   IPrice,
@@ -31,6 +32,8 @@ export const StoreContext = createContext<IStoreContextData>(
 const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   // ========================================================================
 
+  const [alertData, setAlertData] = useState<IAlert | null>(null)
+
   const [storeDataIsLoading, setStoreDataIsLoading] = useState<boolean>(false)
 
   const [categoriesData, setCategoryGroupData] = useState<
@@ -42,7 +45,16 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     IFavoriteProduct[]
   >([])
 
-  // ========================================================================
+  // ======================================================================== ALERTS
+
+  const handleShowAlert = ({ type, title, legend }: IAlert) => {
+    setAlertData({ type, title, legend })
+    setTimeout(() => {
+      setAlertData(null)
+    }, 3000)
+  }
+
+  // ======================================================================== PRODUCTS
 
   const handleFetchStoreData = async () => {
     try {
@@ -233,6 +245,8 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 
   const StoreContextData: IStoreContextData = useMemo(() => {
     return {
+      alertData,
+      handleShowAlert,
       storeDataIsLoading,
       categoriesData,
       productsData,
@@ -248,6 +262,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
       favotitesItemsData
     }
   }, [
+    alertData,
     storeDataIsLoading,
     categoriesData,
     productsData,
