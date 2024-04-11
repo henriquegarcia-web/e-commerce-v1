@@ -8,32 +8,26 @@ import { RadioGroup } from '@headlessui/react'
 
 import { mergeClasses } from '@/utils/functions/mergeClasses'
 
-import { IFilterColor, IFilterSize, IVariation } from '@/@types/store'
+import { IFilterSize, IProduct, IVariation } from '@/@types/store'
 import {
   SetStateFilterSizeType,
   SetStateFilterColorType
 } from '@/@types/globals'
 
 interface IProductVariations {
-  productId?: string
-  productVariations?: IVariation[] | null
+  activeProduct: IProduct
   filterSelectedColor: IVariation | null
   setFilterSelectedColor: SetStateFilterColorType
   filterSelectedSize: IFilterSize | null
   setFilterSelectedSize: SetStateFilterSizeType
-  handleAddProductToCart: () => void
-  handleAddProductToFavorites: () => void
 }
 
 const ProductVariations = ({
-  productId,
-  productVariations,
+  activeProduct,
   filterSelectedColor,
   setFilterSelectedColor,
   filterSelectedSize,
-  setFilterSelectedSize,
-  handleAddProductToCart,
-  handleAddProductToFavorites
+  setFilterSelectedSize
 }: IProductVariations) => {
   const cancelButtonRef = useRef(null)
 
@@ -57,8 +51,8 @@ const ProductVariations = ({
         >
           <RadioGroup.Label className="sr-only">Escolha a cor</RadioGroup.Label>
           <div className="flex items-center space-x-3">
-            {productVariations &&
-              productVariations.map((variation) => (
+            {activeProduct?.variations &&
+              activeProduct.variations.map((variation) => (
                 <RadioGroup.Option
                   key={variation.id}
                   value={variation}
@@ -165,10 +159,10 @@ const ProductVariations = ({
       </div>
 
       <BuyButton
-        productId={productId}
+        activeProduct={activeProduct}
         disabled={!filterSelectedColor || !filterSelectedSize}
-        onClickBuy={handleAddProductToCart}
-        onClickFavorite={handleAddProductToFavorites}
+        filterSelectedColor={filterSelectedColor}
+        filterSelectedSize={filterSelectedSize}
       />
 
       <Modal

@@ -19,7 +19,7 @@ export const CartContext = createContext<ICartContextData>(
 )
 
 const CartProvider = ({ children }: { children: React.ReactNode }) => {
-  const { formatPrice } = useStore()
+  const { handleFormatPrice } = useStore()
 
   // ========================================================================
 
@@ -61,7 +61,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
       storedCart[existingIndex].quantity++
       console.log('Item já existe no carrinho. Quantidade aumentada em 1.')
     } else {
-      const formattedPrice = formatPrice(activeProduct.price)
+      const formattedPrice = handleFormatPrice(activeProduct.price)
 
       const newItem = {
         productId: activeProduct.id,

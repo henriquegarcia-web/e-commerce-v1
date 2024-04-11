@@ -1,42 +1,71 @@
 'use client'
 
+import { useMemo, useState } from 'react'
+
 import { IoHeartOutline } from 'react-icons/io5'
 
+import { Button } from '@/components'
+
+import { useCart } from '@/contexts/CartProvider'
 import { useStore } from '@/contexts/StoreProvider'
-import { useMemo } from 'react'
+
 import { mergeClasses } from '@/utils/functions/mergeClasses'
 
+import { IFilterSize, IProduct, IVariation } from '@/@types/store'
+
 interface IBuyButton {
-  productId?: string
+  activeProduct?: IProduct | null
+  filterSelectedColor: IVariation | null
+  filterSelectedSize: IFilterSize | null
   disabled?: boolean
   loading?: boolean
-  onClickBuy: () => void
-  onClickFavorite: () => void
 }
 
 const BuyButton = ({
-  productId,
+  activeProduct,
   disabled = false,
   loading = false,
-  onClickBuy,
-  onClickFavorite
+  filterSelectedColor,
+  filterSelectedSize
 }: IBuyButton) => {
-  const { favotitesItemsData } = useStore()
+  const { favotitesItemsData, handleAddProductToFavorites } = useStore()
+  const { handleAddProductToCart } = useCart()
+
+  const [addingProductToCart, setAddingProductToCart] = useState(false)
 
   const isFavorite = useMemo(() => {
-    return favotitesItemsData.some((item) => item.productId === productId)
-  }, [productId, favotitesItemsData])
+    return favotitesItemsData.some(
+      (item) => item.productId === activeProduct?.id
+    )
+  }, [activeProduct, favotitesItemsData])
+
+  const addToCart = () => {
+    if (!activeProduct || !filterSelectedColor || !filterSelectedSize) return
+
+    setAddingProductToCart(true)
+    setTimeout(() => {
+      handleAddProductToCart(
+        activeProduct,
+        filterSelectedColor,
+        filterSelectedSize
+      )
+      setAddingProductToCart(false)
+    }, 2000)
+  }
+
+  const addToFavorite = () => {
+    if (!activeProduct) return
+
+    handleAddProductToFavorites(activeProduct)
+  }
 
   return (
     <div className="flex gap-x-2 mt-10">
-      <button
-        type="submit"
-        disabled={disabled || loading}
-        className="flex flex-1 items-center justify-center rounded-md border border-transparent bg-teal-600 px-8 py-3 text-base font-medium text-white transition duration-200 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:bg-gray-500 disabled:pointer-events-none"
-        onClick={onClickBuy}
-      >
-        Comprar
-      </button>
+      <Button
+        label="Comprar"
+        loading={addingProductToCart}
+        onClick={addToCart}
+      />
       <button
         disabled={disabled || loading}
         className={mergeClasses(
@@ -45,7 +74,7 @@ const BuyButton = ({
             : 'border border-transparent bg-gray-200 hover:bg-gray-300',
           'flex w-[50px] items-center justify-center rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:pointer-events-none'
         )}
-        onClick={onClickFavorite}
+        onClick={addToFavorite}
       >
         <IoHeartOutline
           className={mergeClasses(

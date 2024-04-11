@@ -12,9 +12,6 @@ import {
   ProductVariations
 } from '@/components'
 
-import { useCart } from '@/contexts/CartProvider'
-import { useStore } from '@/contexts/StoreProvider'
-
 import { ICategory, IVariation, IFilterSize, IProduct } from '@/@types/store'
 
 interface IProductDetails {
@@ -28,9 +25,6 @@ const ProductDetails = ({
   activeCategory,
   activeProduct
 }: IProductDetails) => {
-  const { handleAddProductToFavorites } = useStore()
-  const { handleAddProductToCart } = useCart()
-
   const [filterSelectedColor, setFilterSelectedColor] =
     useState<IVariation | null>(null)
   const [filterSelectedSize, setFilterSelectedSize] =
@@ -59,19 +53,7 @@ const ProductDetails = ({
     }
   }, [activeProduct])
 
-  const addToCart = () => {
-    handleAddProductToCart(
-      activeProduct,
-      filterSelectedColor,
-      filterSelectedSize
-    )
-  }
-
-  const addToFavorite = () => {
-    handleAddProductToFavorites(activeProduct)
-  }
-
-  if (productPageLoading) return <ProductDetailsSkeleton />
+  if (productPageLoading || !activeProduct) return <ProductDetailsSkeleton />
 
   return (
     <div className="bg-white">
@@ -91,14 +73,11 @@ const ProductDetails = ({
             <ProductMainInfos productMainInfos={productMainInfos} />
             <ProductPrice priceInfos={activeProduct?.price} />
             <ProductVariations
-              productId={activeProduct?.id}
-              productVariations={activeProduct?.variations}
+              activeProduct={activeProduct}
               filterSelectedColor={filterSelectedColor}
               setFilterSelectedColor={setFilterSelectedColor}
               filterSelectedSize={filterSelectedSize}
               setFilterSelectedSize={setFilterSelectedSize}
-              handleAddProductToCart={addToCart}
-              handleAddProductToFavorites={addToFavorite}
             />
           </div>
         </div>
