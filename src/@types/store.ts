@@ -105,6 +105,7 @@ export interface IVariation {
 export interface IProduct {
   id: string
   category: string
+  categorySlug: string
   sku: string
   available: boolean
   name: string
