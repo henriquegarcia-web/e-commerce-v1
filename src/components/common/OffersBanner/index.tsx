@@ -8,10 +8,16 @@ const OffersBanner = () => {
     <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
         <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
-          <Image src="/banner.webp" width={500} height={500} alt="Banner" />
+          <Image
+            src="/banner.webp"
+            width={500}
+            height={500}
+            alt="Banner"
+            className="h-full w-full object-cover object-center"
+          />
         </div>
 
-        <div className="lg:py-24">
+        <div className="flex flex-col justify-center lg:py-24">
           <h2 className="text-gray-800 text-3xl font-bold sm:text-4xl">
             Ofertas Imperdíveis!
           </h2>
@@ -23,7 +29,7 @@ const OffersBanner = () => {
 
           <Link
             href="/camisetas"
-            className="mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
+            className="w-[fit-content] mt-8 inline-block rounded bg-teal-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-teal-700 focus:outline-none focus:ring focus:ring-yellow-400"
           >
             Ver camisetas
           </Link>

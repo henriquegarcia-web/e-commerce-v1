@@ -140,7 +140,7 @@ const MiniCart = ({ mobile = false }: IMiniCart) => {
                                         <div className="flex">
                                           <button
                                             type="button"
-                                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                                            className="font-medium text-teal-600 hover:text-teal-500"
                                             onClick={() =>
                                               handleDeleteCartItem(
                                                 product.productId,
@@ -176,7 +176,7 @@ const MiniCart = ({ mobile = false }: IMiniCart) => {
                           <p>
                             <button
                               type="button"
-                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                              className="font-medium text-teal-600 hover:text-teal-500"
                               onClick={() => setMiniCartIsOpen(false)}
                             >
                               Continuar comprando

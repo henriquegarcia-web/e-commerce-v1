@@ -22,7 +22,7 @@ const Header = () => {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false)
 
   return (
-    <header className="z-[100] flex flex-col items-center bg-transparent">
+    <header className="z-[9] flex flex-col items-center bg-transparent">
       <nav
         className="flex w-full max-w-7xl items-center justify-between px-6 py-5 lg:px-8"
         aria-label="Main Header"

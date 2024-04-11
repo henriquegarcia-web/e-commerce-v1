@@ -58,7 +58,7 @@ const SearchBar = ({}: ISearchBar) => {
             {...field}
             type="text"
             placeholder="O que você procura?"
-            className="w-full border-blue-200 py-2.5 pe-10 text-black bg-transparent focus-visible:outline-none sm:text-sm"
+            className="w-full border-teal-200 py-2.5 pe-10 text-black bg-transparent focus-visible:outline-none sm:text-sm"
             autoComplete="off"
           />
         )}

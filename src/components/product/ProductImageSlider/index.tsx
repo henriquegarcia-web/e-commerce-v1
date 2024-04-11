@@ -31,7 +31,7 @@ const ProductImageSlider = ({ imagesData }: IProductImageSlider) => {
           <div
             key={image.id}
             className={`flex items-center justify-center rounded-lg cursor-pointer border border-gray-200 ${
-              index === activeImageIndex ? 'border-4 border-blue-500' : ''
+              index === activeImageIndex ? 'border-4 border-teal-500' : ''
             }`}
           >
             <img

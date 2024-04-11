@@ -57,7 +57,7 @@ const DesktopFilters = ({
                         name={`${section.id}[]`}
                         defaultValue={option.value}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
                         onChange={() => handleFilterSelect(option.value)}
                         checked={selectedFilters.includes(option.value)}
                       />
@@ -136,7 +136,7 @@ const MobileFilters = ({
                         name={`${section.id}[]`}
                         defaultValue={option.value}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
                         onChange={() => handleFilterSelect(option.value)}
                         checked={selectedFilters.includes(option.value)}
                       />

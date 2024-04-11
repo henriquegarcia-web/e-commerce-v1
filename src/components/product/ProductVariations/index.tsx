@@ -65,8 +65,8 @@ const ProductVariations = ({
                   className={({ active, checked }) =>
                     mergeClasses(
                       active && checked ? 'ring ring-offset-1' : '',
-                      !active && checked ? 'ring-2' : '',
-                      'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
+                      !active && checked ? 'ring-2 ring-teal-500' : '',
+                      'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:ring-teal-500 focus:outline-none'
                     )
                   }
                   style={{ backgroundColor: variation.color }}
@@ -91,7 +91,7 @@ const ProductVariations = ({
           <button
             type="button"
             onClick={handleOpenSizeGuideModal}
-            className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+            className="text-sm font-medium text-teal-600 hover:text-teal-500"
           >
             Guia de Tamanhos
           </button>
@@ -118,7 +118,7 @@ const ProductVariations = ({
                       size.stock > 0
                         ? 'cursor-pointer bg-white text-gray-900 shadow-sm'
                         : 'cursor-not-allowed bg-gray-50 text-gray-200',
-                      active ? 'ring-2 ring-indigo-500' : '',
+                      active ? 'ring-2 ring-teal-500' : '',
                       'group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6'
                     )
                   }
@@ -130,9 +130,7 @@ const ProductVariations = ({
                         <span
                           className={mergeClasses(
                             active ? 'border' : 'border-2',
-                            checked
-                              ? 'border-indigo-500'
-                              : 'border-transparent',
+                            checked ? 'border-teal-500' : 'border-transparent',
                             'pointer-events-none absolute -inset-px rounded-md'
                           )}
                           aria-hidden="true"
