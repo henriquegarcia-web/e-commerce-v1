@@ -31,7 +31,7 @@ const Header = () => {
 
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">HIGH Company</span>
             <Logo />
           </Link>
         </div>
@@ -132,7 +132,7 @@ const DesktopNavigation = ({ categoriesData }: IDesktopNavigation) => {
                       >
                         <div className="flex-auto">
                           <Link
-                            href={category.slug}
+                            href={`/${category.slug}`}
                             className={mergeClasses(
                               isDisabledCategory
                                 ? 'text-gray-400 pointer-events-none'
@@ -154,7 +154,7 @@ const DesktopNavigation = ({ categoriesData }: IDesktopNavigation) => {
       })}
 
       <Link
-        href="ofertas"
+        href="/ofertas"
         className="text-sm font-semibold leading-6 text-gray-900"
       >
         Ofertas
@@ -186,14 +186,10 @@ export const HeaderMobile = ({
       <div className="fixed inset-0 z-10" />
       <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div className="flex items-center justify-between">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
-            />
-          </a>
+          <Link href="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">HIGH Company</span>
+            <Logo />
+          </Link>
           <button
             type="button"
             className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -247,7 +243,7 @@ export const HeaderMobile = ({
                                 <Disclosure.Button
                                   key={category.name}
                                   as="a"
-                                  href={category.slug}
+                                  href={`/${category.slug}`}
                                   disabled={isDisabledCategory}
                                   className={mergeClasses(
                                     isDisabledCategory
@@ -268,7 +264,7 @@ export const HeaderMobile = ({
                 )
               })}
               <Link
-                href="ofertas"
+                href="/ofertas"
                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
               >
                 Ofertas
