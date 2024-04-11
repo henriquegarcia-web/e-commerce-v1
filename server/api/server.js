@@ -7,8 +7,6 @@ const fs = require('fs')
 const db = JSON.parse(fs.readFileSync(path.join(__dirname, 'db.json')))
 const router = jsonServer.router(db)
 
-// const router = jsonServer.router('db.json')
-
 const middlewares = jsonServer.defaults()
 
 server.use(middlewares)
