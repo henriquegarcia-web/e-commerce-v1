@@ -6,8 +6,8 @@
 
 ## Overview
 
-**Acesse a aplicação [clicando aqui](https://store-azcapital-test-three.vercel.app/)** <br/>
-**Acesse o back-end [clicando aqui](https://store-azcapital-test-server.vercel.app/)**
+**Acesse a aplicação [clicando aqui (Ctrl + Click)](https://store-azcapital-test-three.vercel.app/)** <br/>
+**Acesse o back-end [clicando aqui (Ctrl + Click)](https://store-azcapital-test-server.vercel.app/)**
 
 O projeto em questão, é uma aplicação web responsiva desenvolvida com React, Tailwind CSS e Next.js. Ela oferece aos usuários uma lista de camisetas com detalhes como imagem, nome, preço, tamanhos disponíveis e cores. Os usuários podem filtrar os produtos por nome, preço, tamanho e cor, além de visualizar detalhes específicos de cada camiseta.
 
