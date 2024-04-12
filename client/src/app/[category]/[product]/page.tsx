@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from 'react'
 
-import { Alert, Header, NotFound, ProductDetails } from '@/components'
+import {
+  Alert,
+  Header,
+  NotFound,
+  ProductDetails,
+  ProductDetailsSkeleton
+} from '@/components'
 
 import { useStore } from '@/contexts/StoreProvider'
 
@@ -18,8 +24,13 @@ interface Props {
 export default function ProductPage({ params }: Props) {
   const { category, product } = params
 
-  const { alertData, handleFindCategoryBySlug, handleFindProductBySlug } =
-    useStore()
+  const {
+    alertData,
+    categoriesData,
+    productsData,
+    handleFindCategoryBySlug,
+    handleFindProductBySlug
+  } = useStore()
 
   const [activeCategory, setActiveCategory] = useState<ICategory | null>(null)
   const [activeProduct, setActiveProduct] = useState<IProduct | null>(null)
@@ -27,27 +38,39 @@ export default function ProductPage({ params }: Props) {
   const [productPageLoading, setProductPageLoading] = useState(true)
 
   useEffect(() => {
-    const categoryFound = handleFindCategoryBySlug(category)
-    const productFound = handleFindProductBySlug(product)
+    setProductPageLoading(true)
+
+    if (
+      !category ||
+      !categoriesData ||
+      !categoriesData?.length ||
+      !productsData ||
+      !productsData?.length
+    )
+      return
+
+    const categoryFound = handleFindCategoryBySlug(category, categoriesData)
+    const productFound = handleFindProductBySlug(product, productsData)
 
     setActiveCategory(categoryFound)
     setActiveProduct(productFound)
 
     setProductPageLoading(false)
-  }, [category, product, handleFindCategoryBySlug, handleFindProductBySlug])
+  }, [category, product, categoriesData, productsData])
 
   return (
     <main className="page">
       <Header />
 
-      {(!activeCategory || !activeProduct) && !productPageLoading ? (
-        <NotFound />
-      ) : (
+      {productPageLoading ? (
+        <ProductDetailsSkeleton />
+      ) : !!activeCategory && !!activeProduct && !productPageLoading ? (
         <ProductDetails
-          productPageLoading={productPageLoading}
           activeCategory={activeCategory}
           activeProduct={activeProduct}
         />
+      ) : (
+        <NotFound />
       )}
 
       {alertData && <Alert alertData={alertData} />}

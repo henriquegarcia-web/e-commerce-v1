@@ -130,8 +130,6 @@ const ProductsList = ({ activeCategory, searchTerm }: IProductsList) => {
   const isProductListLoading =
     (!activeCategory && !searchTerm) || !currentProductsList
 
-  console.log(isProductListLoading)
-
   return (
     <div className="bg-white">
       <div>

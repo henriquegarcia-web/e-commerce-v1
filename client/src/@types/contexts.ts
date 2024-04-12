@@ -20,11 +20,17 @@ export interface IStoreContextData {
   storeDataIsLoading: boolean
   categoriesData: ICategoryGroup[] | null
   productsData: IProduct[] | null
-  handleFindCategoryBySlug: (slug: string | null) => ICategory | null
+  handleFindCategoryBySlug: (
+    slug: string,
+    categoriesData: ICategoryGroup[]
+  ) => ICategory | null
   handleFindProductsListByCategoryId: (
     categoryId: string | null
   ) => IProduct[] | null
-  handleFindProductBySlug: (slug: string | null) => IProduct | null
+  handleFindProductBySlug: (
+    slug: string,
+    productsData: IProduct[]
+  ) => IProduct | null
   handleFilterProducts: (searchTerm: string) => IProduct[] | null
   handleFormatPrice: (priceInfos: IPrice) => IFormattedPrice
   getBreadcrumb: (categoryId: string) => IBreadcrumbData | null

@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from 'react'
 import {
   Breadcrumb,
   OfferBadge,
-  ProductDetailsSkeleton,
   ProductImageSlider,
   ProductMainInfos,
   ProductPrice,
@@ -15,16 +14,11 @@ import {
 import { ICategory, IVariation, IFilterSize, IProduct } from '@/@types/store'
 
 interface IProductDetails {
-  productPageLoading: boolean
-  activeCategory: ICategory | null
-  activeProduct: IProduct | null
+  activeCategory: ICategory
+  activeProduct: IProduct
 }
 
-const ProductDetails = ({
-  productPageLoading,
-  activeCategory,
-  activeProduct
-}: IProductDetails) => {
+const ProductDetails = ({ activeCategory, activeProduct }: IProductDetails) => {
   const [filterSelectedColor, setFilterSelectedColor] =
     useState<IVariation | null>(null)
   const [filterSelectedSize, setFilterSelectedSize] =
@@ -52,8 +46,6 @@ const ProductDetails = ({
       }
     }
   }, [activeProduct])
-
-  if (productPageLoading || !activeProduct) return <ProductDetailsSkeleton />
 
   return (
     <div className="bg-white">

@@ -77,9 +77,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   const handleFindCategoryBySlug = useCallback(
-    (slug: string | null) => {
-      if (!categoriesData || !slug) return null
-
+    (slug: string, categoriesData: ICategoryGroup[]) => {
       const categoryGroup = categoriesData.find((group) =>
         group.categories.find((c) => c.slug === slug)
       )
@@ -93,7 +91,7 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 
       return null
     },
-    [categoriesData]
+    []
   )
 
   const handleFindProductsListByCategoryId = useCallback(
@@ -110,14 +108,12 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   )
 
   const handleFindProductBySlug = useCallback(
-    (slug: string | null) => {
-      if (!productsData || !slug) return null
-
+    (slug: string, productsData: IProduct[]) => {
       const foundProduct = productsData.find((p) => p.slug === slug)
 
       return foundProduct || null
     },
-    [productsData]
+    []
   )
 
   const getBreadcrumb = useCallback(
