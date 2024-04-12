@@ -51,7 +51,7 @@ const MiniCart = ({ mobile = false }: IMiniCart) => {
       )}
 
       <Transition.Root show={miniCartIsOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={setMiniCartIsOpen}>
+        <Dialog as="div" className="relative z-20" onClose={setMiniCartIsOpen}>
           <Transition.Child
             as={Fragment}
             enter="ease-in-out duration-500"
@@ -64,7 +64,7 @@ const MiniCart = ({ mobile = false }: IMiniCart) => {
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-hidden">
+          <div className="z-20 fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                 <Transition.Child
