@@ -1,4 +1,4 @@
-# Loja de Camisetas - SERVIDOR
+# E-Commerce Template V1 - SERVIDOR
 
 ## Instalação e Uso
 

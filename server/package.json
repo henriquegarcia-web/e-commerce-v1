@@ -1,5 +1,5 @@
 {
-  "name": "store-azcapital-test-server",
+  "name": "e-commerce-v1-server",
   "version": "1.0.0",
   "description": "",
   "main": "api/server.js",

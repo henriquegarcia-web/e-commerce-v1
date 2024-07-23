@@ -1,4 +1,4 @@
-# Loja de Camisetas - CLIENTE
+# E-Commerce Template V1 - CLIENTE
 
 ## Instalação e Uso
 
