@@ -7,13 +7,16 @@ import Logo from './common/Logo'
 import SearchBar from './common/SearchBar'
 import MiniCart from './common/MiniCart'
 import UserSettings from './common/UserSettings'
-import IconButton from './common/IconButton'
 import Modal from './common/Modal'
-import Button from './common/Button'
 import HeroBanner from './common/HeroBanner'
 import OffersBanner from './common/OffersBanner'
 import OfferBadge from './common/OfferBadge'
 import NotFound from './common/NotFound'
+
+// ==> INPUTS COMPONENTS
+
+import Button from './inputs/Button'
+import IconButton from './inputs/IconButton'
 
 // ==> CATEGORY COMPONENTS
 

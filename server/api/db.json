@@ -1,4 +1,9 @@
 {
+  "store": {
+    "logo": "",
+    "logoMinified": "",
+    "logo": ""
+  },
   "categories": [
     {
       "id": "category-group-01",

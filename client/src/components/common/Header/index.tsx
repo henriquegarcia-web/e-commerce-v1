@@ -100,7 +100,7 @@ interface IDesktopNavigation {
 const DesktopNavigation = ({ categoriesData }: IDesktopNavigation) => {
   return (
     <Popover.Group className="flex lg:gap-x-8">
-      {categoriesData.map((categoryGroup: ICategoryGroup) => {
+      {categoriesData?.map((categoryGroup: ICategoryGroup) => {
         const isDisabledCategoryGroup =
           !categoryGroup.categories.length || !categoryGroup.active
 
